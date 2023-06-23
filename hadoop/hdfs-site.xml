@@ -24,12 +24,12 @@
 
         <property>
                 <name>dfs.name.dir</name>
-                <value>file:///home/hadoop/namenode</value>
+		<value>file:///root/namenode</value>
         </property>
 
         <property>
                 <name>dfs.data.dir</name>
-                <value>file:///home/hadoop/datanode</value>
+		<value>file:///root/datanode</value>
         </property>
 
 </configuration>
