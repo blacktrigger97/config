@@ -17,7 +17,7 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-	property>
+	<property>
                 <name>dfs.replication</name>
                 <value>1</value>
         </property>
