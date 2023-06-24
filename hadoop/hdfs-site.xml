@@ -34,7 +34,7 @@
 
         <property>
                 <name>dfs.namenode.checkpoint.dir</name>
-		<value>file:///root/secondary</value>
+		<value>file:///root/secondary_namenode</value>
         </property>
 	
 	<property>
