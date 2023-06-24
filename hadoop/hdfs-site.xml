@@ -68,6 +68,11 @@
         </property>
 	
 	<property>
+                <name>dfs.namenode.heartbeat.recheck-interval</name>
+		<value>60000</value>
+        </property>
+	
+	<property>
                 <name>dfs.permissions.superusergroup</name>
 		<value>root</value>
         </property>
