@@ -44,6 +44,9 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @audience     private
 ## @stability    evolving
 ## @replaceable  no
+
+HADOOP_HDFS_HOME=/usr/bin
+
 "${HADOOP_HDFS_HOME}/bin/hadoop"  namenode &
 "${HADOOP_HDFS_HOME}/bin/hadoop"  datanode &
 "${HADOOP_HDFS_HOME}/bin/hadoop"  secondarynamenode
