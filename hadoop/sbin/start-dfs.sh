@@ -174,14 +174,20 @@ if [[ -n "${SECONDARY_NAMENODES}" ]]; then
 
     echo "Starting secondary namenodes [${SECONDARY_NAMENODES}]"
 
-    hadoop_uservar_su hdfs secondarynamenode "${HADOOP_HDFS_HOME}/bin/hdfs" \
+    '''hadoop_uservar_su hdfs secondarynamenode "${HADOOP_HDFS_HOME}/bin/hdfs" \
       --workers \
       --config "${HADOOP_CONF_DIR}" \
       --hostnames "${SECONDARY_NAMENODES}" \
       --daemon start \
       secondarynamenode
-    (( HADOOP_JUMBO_RETCOUNTER=HADOOP_JUMBO_RETCOUNTER + $? ))
-    #hadoop_uservar_su hdfs secondarynamenode "${HADOOP_HDFS_HOME}/bin/hadoop" --config "${HADOOP_CONF_DIR}" --hostnames "${SECONDARY_NAMENODES}" secondarynamenode
+    (( HADOOP_JUMBO_RETCOUNTER=HADOOP_JUMBO_RETCOUNTER + $? ))'''
+    hadoop_uservar_su hdfs secondarynamenode "${HADOOP_HDFS_HOME}/bin/hadoop" --config "${HADOOP_CONF_DIR}" --hostnames "${SECONDARY_NAMENODES}" secondarynamenode &
+
+    # Wait for any process to exit
+    wait -n
+
+    # Exit with status of process that exited first
+    exit $?
   fi
 fi
 
