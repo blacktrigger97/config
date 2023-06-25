@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -49,7 +49,7 @@ HADOOP_HDFS_HOME=/root/hadoop
 
 "${HADOOP_HDFS_HOME}/bin/hadoop"  namenode &
 "${HADOOP_HDFS_HOME}/bin/hadoop"  datanode &
-"${HADOOP_HDFS_HOME}/bin/hadoop"  secondarynamenode
+"${HADOOP_HDFS_HOME}/bin/hadoop"  secondarynamenode &
 
 # Wait for any process to exit
 wait -n
