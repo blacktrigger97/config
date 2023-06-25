@@ -34,6 +34,9 @@ HDFS_DATANODE_USER=root
 HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
+
+/usr/bin/sshpass –p "Vis97may98" /usr/bin/ssh-copy-id root@namenode
+
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
