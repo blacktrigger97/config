@@ -35,6 +35,10 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+/usr/sbin/sshd
 /usr/bin/sshpass –p "Vis97may98" /usr/bin/ssh-copy-id root@namenode
 
 ## @description  usage info
