@@ -21,4 +21,9 @@
                 <name>fs.defaultFS</name>
                 <value>hdfs://name_secon_res:9870</value>
         </property>
+
+	<property>
+                <name>hadoop.tmp.dir</name>
+		<value>/root/tmp</value>
+        </property>
 </configuration>
