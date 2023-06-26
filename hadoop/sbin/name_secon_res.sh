@@ -47,6 +47,10 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
+if [ ! -f /root/namenode/current ]; then
+	/root/hadoop/bin/hdfs namenode -format -force
+fi
+
 "${HADOOP_HDFS_HOME}/bin/hadoop"  namenode &
 "${HADOOP_HDFS_HOME}/bin/hadoop"  secondarynamenode &
 sleep 30
