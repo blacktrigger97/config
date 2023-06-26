@@ -22,8 +22,8 @@
                 <value>hdfs://name-secon-res:9870</value>
         </property>
 
-	<property>
+	<!--<property>
                 <name>hadoop.tmp.dir</name>
 		<value>/root/tmp</value>
-        </property>
+	</property>-->
 </configuration>
