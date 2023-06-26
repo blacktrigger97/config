@@ -50,6 +50,7 @@ HADOOP_HDFS_HOME=/root/hadoop
 "${HADOOP_HDFS_HOME}/bin/hadoop"  datanode &
 sleep 30
 "${HADOOP_HDFS_HOME}/bin/hdfs" -mkdir -p /root/jobhistory/{tmp,done}
+"${HADOOP_HDFS_HOME}/bin/hdfs" -chmod -R 777 /root/jobhistory
 "${HADOOP_HDFS_HOME}/bin/hadoop"  nodemanager &
 "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
 
