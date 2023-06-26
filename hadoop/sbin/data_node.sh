@@ -47,11 +47,16 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
-"${HADOOP_HDFS_HOME}/bin/hadoop"  datanode &
+"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
 sleep 30
-"${HADOOP_HDFS_HOME}/bin/hdfs" -mkdir -p /root/jobhistory/{tmp,done}
-"${HADOOP_HDFS_HOME}/bin/hdfs" -chmod -R 777 /root/jobhistory
-"${HADOOP_HDFS_HOME}/bin/hadoop"  nodemanager &
+
+hdfs dfs -test -d /root/jobhistory
+if [ $? != 0 ]; then
+	"${HADOOP_HDFS_HOME}/bin/hdfs" -mkdir -p /root/tmp
+	"${HADOOP_HDFS_HOME}/bin/hdfs" -mkdir -p /root/jobhistory/{tmp,done}
+	"${HADOOP_HDFS_HOME}/bin/hdfs" -chmod -R 777 /root
+fi
+"${HADOOP_HDFS_HOME}/bin/hdfs"  nodemanager &
 "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
 
 # Wait for any process to exit

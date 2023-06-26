@@ -51,10 +51,10 @@ if [ ! -f /root/namenode/current ]; then
 	/root/hadoop/bin/hdfs namenode -format -force
 fi
 
-"${HADOOP_HDFS_HOME}/bin/hadoop"  namenode &
-"${HADOOP_HDFS_HOME}/bin/hadoop"  secondarynamenode &
+"${HADOOP_HDFS_HOME}/bin/hdfs"  namenode &
+"${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
 sleep 30
-"${HADOOP_HDFS_HOME}/bin/hadoop"  resourcemanager &
+"${HADOOP_HDFS_HOME}/bin/hdfs"  resourcemanager &
 
 # Wait for any process to exit
 wait -n
