@@ -22,27 +22,27 @@
 	
 	<property>
                 <name>yarn.nodemanager.webapp.address</name>
-                <value>nameSeconRes:8042</value>
+                <value>nameseconres:8042</value>
         </property>
 
 	<property>
                 <name>yarn.resourcemanager.address</name>
-                <value>nameSeconRes:8032</value>
+                <value>nameseconres:8032</value>
         </property>
 	
 	<property>
                 <name>yarn.resourcemanager.scheduler.address</name>
-                <value>nameSeconRes:8030</value>
+                <value>nameseconres:8030</value>
         </property>
 
 	<property>
                 <name>yarn.resourcemanager.resource-tracker.address</name>
-                <value>nameSeconRes:8031</value>
+                <value>nameseconres:8031</value>
         </property>
 
 	<property>
                 <name>yarn.resourcemanager.webapp.address</name>
-                <value>nameSeconRes:8088</value>
+                <value>nameseconres:8088</value>
         </property>
 
 	<property>

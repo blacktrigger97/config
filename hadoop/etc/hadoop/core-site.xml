@@ -19,7 +19,7 @@
 <configuration>
 	<property>
                 <name>fs.defaultFS</name>
-                <value>hdfs://nameSeconRes:9870</value>
+                <value>hdfs://nameseconres:9870</value>
         </property>
 
 	<!--<property>
