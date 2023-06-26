@@ -54,7 +54,7 @@ fi
 "${HADOOP_HDFS_HOME}/bin/hdfs"  namenode &
 "${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
 sleep 30
-"${HADOOP_HDFS_HOME}/bin/hdfs"  resourcemanager &
+#"${HADOOP_HDFS_HOME}/bin/hdfs"  resourcemanager &
 
 # Wait for any process to exit
 wait -n
