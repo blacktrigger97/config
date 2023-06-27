@@ -20,7 +20,7 @@
                 <value>mapreduce_shuffle</value>
         </property>
 	
-	<property>
+	<!--<property>
                 <name>yarn.nodemanager.webapp.address</name>
                 <value>name-secon-res:8042</value>
         </property>
@@ -68,6 +68,6 @@
 	<property>
                 <name>yarn.scheduler.maximum-allocation-vcores</name>
                 <value>4</value>
-        </property>
+	</property>-->
 
 </configuration>
