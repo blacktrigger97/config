@@ -61,7 +61,7 @@ fi
 
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &
 
-if curl -s --head  --request GET http://data-node:19888/jobhistory | grep "200 OK" > /dev/null; then
+if curl -s --head  --request GET http://data-node1:19888/jobhistory | grep "200 OK" > /dev/null; then
    echo "JobHistory is UP"
 else
    "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
