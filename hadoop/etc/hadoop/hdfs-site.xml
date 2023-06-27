@@ -19,7 +19,7 @@
 <configuration>
 	<property>
                 <name>dfs.replication</name>
-                <value>2</value>
+                <value>1</value>
         </property>
 
         <property>
@@ -37,15 +37,15 @@
 		<value>file:///root/secondary_namenode</value>
         </property>
 	
-	<property>
+	<!--<property>
                 <name>dfs.namenode.checkpoint.period</name>
 		<value>600</value>
         </property>
 	
-	<!--<property>
+	<property>
                 <name>dfs.namenode.checkpoint.txns</name>
 		<value>100000</value>
-	</property>-->
+	</property>
 	
 	<property>
                 <name>dfs.namenode.checkpoint.check.period</name>
@@ -57,7 +57,7 @@
 		<value>3</value>
         </property>
 	
-	<!--<property>
+	<property>
                 <name>dfs.namenode.num.checkpoints.retained</name>
 		<value>2</value>
         </property>
@@ -65,14 +65,14 @@
 	<property>
                 <name>dfs.namenode.name.dir.restore</name>
 		<value>true</value>
-	</property>-->
+	</property>
 	
 	<property>
                 <name>dfs.namenode.heartbeat.recheck-interval</name>
 		<value>60000</value>
         </property>
 	
-	<!--<property>
+	<property>
                 <name>dfs.permissions.superusergroup</name>
 		<value>root</value>
 	</property>-->
