@@ -24,6 +24,6 @@
 
 	<property>
                 <name>hadoop.tmp.dir</name>
-		<value>/root/tmp</value>
+		<value>/root/hadoop/tmp</value>
 	</property>
 </configuration>
