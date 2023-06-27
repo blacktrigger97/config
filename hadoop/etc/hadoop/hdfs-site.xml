@@ -57,12 +57,12 @@
 		<value>3</value>
         </property>
 	
-	<property>
+	<!--<property>
                 <name>dfs.namenode.num.checkpoints.retained</name>
 		<value>2</value>
         </property>
 	
-	<!--<property>
+	<property>
                 <name>dfs.namenode.name.dir.restore</name>
 		<value>true</value>
 	</property>-->
