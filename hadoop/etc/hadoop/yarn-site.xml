@@ -20,10 +20,10 @@
                 <value>mapreduce_shuffle</value>
         </property>
 	
-	<property>
+	<!--<property>
                 <name>yarn.nodemanager.webapp.address</name>
                 <value>name-secon-res:8042</value>
-        </property>
+	</property>-->
 
 	<property>
                 <name>yarn.resourcemanager.address</name>
