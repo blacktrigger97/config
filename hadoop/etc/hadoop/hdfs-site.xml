@@ -72,8 +72,8 @@
 		<value>60000</value>
         </property>
 	
-	<property>
+	<!--<property>
                 <name>dfs.permissions.superusergroup</name>
 		<value>root</value>
-        </property>
+	</property>-->
 </configuration>
