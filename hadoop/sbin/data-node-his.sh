@@ -56,8 +56,15 @@ if [ $? != 0 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/jobhistory/{tmp,done}
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /root
 fi
+
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &
-"${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
+
+if curl -s --head  --request GET http://data-node:19888/jobhistory | grep "200 OK" > /dev/null; then
+   echo "JobHistory is UP"
+else
+   "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
+fi
+
 
 # Wait for any process to exit
 wait -n
