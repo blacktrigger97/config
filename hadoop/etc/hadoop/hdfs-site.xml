@@ -19,7 +19,7 @@
 <configuration>
 	<property>
                 <name>dfs.replication</name>
-                <value>1</value>
+                <value>2</value>
         </property>
 
         <property>
@@ -37,7 +37,7 @@
 		<value>file:///root/secondary_namenode</value>
         </property>
 	
-	<!--<property>
+	<property>
                 <name>dfs.namenode.checkpoint.period</name>
 		<value>600</value>
         </property>
@@ -75,5 +75,5 @@
 	<property>
                 <name>dfs.permissions.superusergroup</name>
 		<value>root</value>
-	</property>-->
+	</property>
 </configuration>

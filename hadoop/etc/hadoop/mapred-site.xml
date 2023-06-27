@@ -22,7 +22,7 @@
                 <value>yarn</value>
         </property>
 
-	<!--<property>
+	<property>
                 <name>mapreduce.jobhistory.address</name>
                 <value>10020</value>
         </property>
@@ -40,5 +40,5 @@
 	<property>
                 <name>mapreduce.jobhistory.done-dir</name>
 		<value>/root/jobhistory/done</value>
-	</property>-->
+	</property>
 </configuration>
