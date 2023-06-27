@@ -30,6 +30,8 @@
 # For secure daemons, this means both the secure and insecure env vars need to be
 # defined.  e.g., HDFS_DATANODE_USER=root HDFS_DATANODE_SECURE_USER=hdfs
 #
+echo "$(hostname)    127.0.0.1" >> /etc/hosts
+
 HDFS_DATANODE_USER=root
 HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
