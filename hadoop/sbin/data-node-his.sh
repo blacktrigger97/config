@@ -50,7 +50,7 @@ HADOOP_HDFS_HOME=/root/hadoop
 "${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
 sleep 30
 
-hdfs dfs -test -d /root/jobhistory
+"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/jobhistory
 if [ $? != 0 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/tmp
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/jobhistory/{tmp,done}
