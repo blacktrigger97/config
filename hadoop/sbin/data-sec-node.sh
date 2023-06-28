@@ -49,24 +49,22 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
-ip_add=`/usr/sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}'`
-echo "$ip_add    $(hostname)" >> /etc/hosts
-
-cat /root/hosts | grep -E name-* >> /etc/hosts
-cat /root/hosts | grep -E data-* >> /etc/hosts
+sh "${HADOOP_HDFS_HOME}/sbin/"host-config.s
 
 # Secondary NameNode
-if curl -s --head  --request GET http://data-node1:9868/index.html | grep "200 OK" > /dev/null; then
-   echo "Secondary Namenode is UP"
+if [[ "$(hostname)" != "data-sec-node" ]]; then
+   echo "Secondary Namenode is already up"
 else
    "${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
+   echo "Secondary namenode initiated"
 fi
 
 sleep 10
 
 # DataNode
 "${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
-sleep 10
+
+sleep 20
 
 # Create neccessary directory if not exists
 "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/jobhistory
@@ -77,12 +75,6 @@ if [ $? != 0 ]; then
 fi
 
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &
-
-if curl -s --head  --request GET http://data-node1:19888/jobhistory | grep "200 OK" > /dev/null; then
-   echo "JobHistory is UP"
-else
-   "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
-fi
 
 
 # Wait for any process to exit

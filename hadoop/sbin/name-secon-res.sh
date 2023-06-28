@@ -69,17 +69,16 @@ sleep 30
 
 # Resource Manager
 "${HADOOP_HDFS_HOME}/bin/yarn"  resourcemanager &
-if [ $? -eq 0 ]; then
-       echo "Resource manager up"
-else
- 	exit 1
-fi	
+echo "Resource manager initiated"
+
+sleep 20
 
 # Job History Server
-if curl -s --head  --request GET http://name-res-his:19888/jobhistory | grep "200 OK" > /dev/null; then
-   echo "JobHistory is UP"
+if [[ "$(hostname)" != "name-res-his" ]]; then
+   echo "JobHistory is already up"
 else
    "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
+   echo "JobHistory in initiated"
 fi
 
 # Wait for any process to exit
