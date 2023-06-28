@@ -24,7 +24,7 @@
 
         <property>
                 <name>dfs.name.dir</name>
-		<value>file:///root/namenode</value>
+		<value>file:///root/namenode,file:///root/docker_namenode</value>
         </property>
 
         <property>

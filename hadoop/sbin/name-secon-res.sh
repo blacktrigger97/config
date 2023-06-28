@@ -49,14 +49,38 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
+sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
+
+# NameNode
 if [ ! -f /root/namenode/current ]; then
+	echo "Namenode Format"
 	/root/hadoop/bin/hdfs namenode -format -force
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
+else
+	echo "Checkpoint recovery"
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode --importCheckpoint &
+	if [ $? -ne 0 ]; then
+		echo "Manual recovery"
+		"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -recover &
+	fi
 fi
 
-"${HADOOP_HDFS_HOME}/bin/hdfs"  namenode &
-"${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
 sleep 30
+
+# Resource Manager
 "${HADOOP_HDFS_HOME}/bin/yarn"  resourcemanager &
+if [ $? -eq 0 ]; then
+       echo "Resource manager up"
+else
+ 	exit 1
+fi	
+
+# Job History Server
+if curl -s --head  --request GET http://name-res-his:19888/jobhistory | grep "200 OK" > /dev/null; then
+   echo "JobHistory is UP"
+else
+   "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
+fi
 
 # Wait for any process to exit
 wait -n

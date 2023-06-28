@@ -49,9 +49,26 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
-"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
-sleep 30
+ip_add=`/usr/sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}'`
+echo "$ip_add    $(hostname)" >> /etc/hosts
 
+cat /root/hosts | grep -E name-* >> /etc/hosts
+cat /root/hosts | grep -E data-* >> /etc/hosts
+
+# Secondary NameNode
+if curl -s --head  --request GET http://data-node1:9868/index.html | grep "200 OK" > /dev/null; then
+   echo "Secondary Namenode is UP"
+else
+   "${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
+fi
+
+sleep 10
+
+# DataNode
+"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
+sleep 10
+
+# Create neccessary directory if not exists
 "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/jobhistory
 if [ $? != 0 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/tmp
