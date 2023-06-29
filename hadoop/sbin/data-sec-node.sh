@@ -47,7 +47,9 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no
 
-HADOOP_HDFS_HOME=/root/hadoop
+source ~/.bashrc
+
+HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
 
