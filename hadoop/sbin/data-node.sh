@@ -53,17 +53,6 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
 
-# Secondary NameNode
-if [[ "$(hostname)" != "data-sec-node" ]]; then
-	echo "Secondary Namenode is already up"
-else
-	rm -rf ${DOCKER_DIR}${DOCKER_SECONDARY_NAMENODE_DIR}/*
-	"${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
-	echo "Secondary namenode initiated"
-fi
-
-sleep 10
-
 # DataNode
 "${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
 
@@ -73,6 +62,7 @@ sleep 20
 "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/jobhistory
 if [ $? != 0 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/tmp
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/jobhistory/{tmp,done}
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /root
 fi

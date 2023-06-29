@@ -47,39 +47,31 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no
 
-HADOOP_HDFS_HOME=/root/hadoop
+source ~/.bashrc
+
+HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
 
-# NameNode
-if [ ! -f /root/namenode/current ]; then
-	echo "Namenode Format"
-	/root/hadoop/bin/hdfs namenode -format -force
-	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
+# Secondary NameNode
+if [[ "$(hostname)" != "secon-hist" ]]; then
+	echo "Secondary Namenode is already up"
 else
-	echo "Checkpoint recovery"
-	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode --importCheckpoint &
-	if [ $? -ne 0 ]; then
-		echo "Manual recovery"
-		"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -recover &
-	fi
+	rm -rf ${DOCKER_DIR}${DOCKER_SECONDARY_NAMENODE_DIR}/*
+	"${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
+	echo "Secondary namenode initiated"
 fi
 
-sleep 30
-
-# Resource Manager
-"${HADOOP_HDFS_HOME}/bin/yarn"  resourcemanager &
-echo "Resource manager initiated"
-
-sleep 20
+sleep 10
 
 # Job History Server
-if [[ "$(hostname)" != "name-res-his" ]]; then
+if [[ "$(hostname)" != "secon-hist" ]]; then
    echo "JobHistory is already up"
 else
    "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
    echo "JobHistory in initiated"
 fi
+
 
 # Wait for any process to exit
 wait -n
