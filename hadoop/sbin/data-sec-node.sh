@@ -55,7 +55,7 @@ sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
 if [[ "$(hostname)" != "data-sec-node" ]]; then
 	echo "Secondary Namenode is already up"
 else
-	rm -rf ${DOCKER_DIR}/${DOCKER_SECONDARY_NAMENODE_DIR}/*
+	rm -rf ${DOCKER_DIR}${DOCKER_SECONDARY_NAMENODE_DIR}/*
 	"${HADOOP_HDFS_HOME}/bin/hdfs"  secondarynamenode &
 	echo "Secondary namenode initiated"
 fi
