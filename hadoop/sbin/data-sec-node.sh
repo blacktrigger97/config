@@ -49,7 +49,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
-sh "${HADOOP_HDFS_HOME}/sbin/"host-config.s
+sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
 
 # Secondary NameNode
 if [[ "$(hostname)" != "data-sec-node" ]]; then
