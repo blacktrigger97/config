@@ -11,7 +11,7 @@ if [ $? -eq 1 ]; then
 	echo "$ip_addr    $(hostname)" >> /etc/hosts
 fi
 
-IFS=$'\n' read -r -d '' -a host_addr < <(cat ${DOCKER_DIR}hosts/hosts | awk '{print $2}')
+IFS=$'\n' read -r -d '' -a host_addr < <(cat /etc/hosts | awk '{print $2}')
 IFS=$'\n' read -r -d '' -a hdc_addr < <(cat ${DOCKER_DIR}hosts/hosts | awk '{print $2}')
 for i in ${hdc_addr[@]}
 do
