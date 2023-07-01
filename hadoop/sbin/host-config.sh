@@ -11,6 +11,7 @@ if [ $? -eq 1 ]; then
 	echo "$ip_addr    $(hostname)" >> /etc/hosts
 fi
 
+IFS=$'\n' read -r -d '' -a host_addr < <(cat ${DOCKER_DIR}hosts/hosts | awk '{print $2}')
 IFS=$'\n' read -r -d '' -a hdc_addr < <(cat ${DOCKER_DIR}hosts/hosts | awk '{print $2}')
 for i in ${hdc_addr[@]}
 do
@@ -18,12 +19,16 @@ do
 	if [[ "$i" == "$(hostname)" ]]; then
 		sed -i -E "s/.*$(hostname)/$ip_addr\t$(hostname)/g" ${DOCKER_DIR}hosts/hosts
 	else
-		echo "Adding other node to hosts file"
-		cat ${DOCKER_DIR}hosts/hosts | grep -E $i >> /etc/hosts
+		if [[ ! " ${host_addr[*]} " =~ " $i " ]]; then
+			echo "Adding other node to hosts file"
+			cat ${DOCKER_DIR}hosts/hosts | grep -E $i >> /etc/hosts
+		fi
 	fi
 done
 
+
 if [[ ! " ${hdc_addr[*]} " =~ " $(hostname) " ]]; then
-    # whatever you want to do when array doesn't contain value
-    echo "$ip_addr    $(hostname)" >> ${DOCKER_DIR}hosts/hosts
+    	# whatever you want to do when array doesn't contain value
+	echo "$ip_addr    $(hostname)" >> ${DOCKER_DIR}hosts/hosts
 fi
+
