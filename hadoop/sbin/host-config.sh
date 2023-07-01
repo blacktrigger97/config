@@ -16,17 +16,10 @@ for i in ${hdc_addr[@]}
 do
 	echo $i
 	if [[ "$i" == "$(hostname)" ]]; then
-		sed -i -E "s/*$(hostname)/$ip_addr\t$(hostname)/g" ${DOCKER_DIR}hosts/hosts
+		sed -i -E "s/.*$(hostname)/$ip_addr\t$(hostname)/g" ${DOCKER_DIR}hosts/hosts
 	else
 		echo "Adding other node to hosts file"
 		cat ${DOCKER_DIR}hosts/hosts | grep -E $i >> /etc/hosts
 	fi
 done
-
-cat ${DOCKER_DIR}hosts/hosts | grep -E $(hostname)*
-if [ $? -eq 1 ]; then
-        echo "Adding host eth0 IP in shared hosts file"
-        echo "$ip_addr    $(hostname)" >> ${DOCKER_DIR}hosts/hosts
-fi
-
 
