@@ -17,11 +17,16 @@ for i in ${hdc_addr[@]}
 do
 	echo $i
 	if [[ "$i" == "$(hostname)" ]]; then
+		echo "Updating shared hosts file"
 		sed -i -E "s/.*$(hostname)/$ip_addr\t$(hostname)/g" ${DOCKER_DIR}hosts/hosts
 	else
 		if [[ ! " ${host_addr[*]} " =~ " $i " ]]; then
 			echo "Adding other node to hosts file"
 			cat ${DOCKER_DIR}hosts/hosts | grep -E $i >> /etc/hosts
+		else
+			echo "Updating hosts file"
+			upd_addr=`cat ${DOCKER_DIR}hosts/hosts | grep -E $i`
+			sed -i -E "s/.*$i/$upd_addr/g" /etc/hosts
 		fi
 	fi
 done
