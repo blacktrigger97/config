@@ -23,3 +23,7 @@ do
 	fi
 done
 
+if [[ ! " ${hdc_addr[*]} " =~ " $(hostname) " ]]; then
+    # whatever you want to do when array doesn't contain value
+    echo "$ip_addr    $(hostname)" >> ${DOCKER_DIR}hosts/hosts
+fi
