@@ -49,7 +49,9 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
-sh "${HADOOP_HDFS_HOME}/sbin/"host-config.sh
+touch ${DOCKER_DIR}hosts/hosts
+
+echo "* * * * 2 "${HADOOP_HDFS_HOME}"/sbin/host-config.sh >/dev/null 2>&1" > /etc/crontab
 
 # NameNode
 if [ ! -f /root/namenode/current ]; then
