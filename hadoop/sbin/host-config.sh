@@ -26,7 +26,7 @@ do
 		else
 			echo "Updating hosts file"
 			upd_addr=`cat ${DOCKER_DIR}hosts/hosts | grep -E $i | awk '{print $1}'`
-			sed -i -E "s/.*$i/$upd_addr\t$i/g" /etc/hosts
+			sed -ci -E "s/.*$i/$upd_addr\t$i/g" /etc/hosts
 		fi
 	fi
 done
