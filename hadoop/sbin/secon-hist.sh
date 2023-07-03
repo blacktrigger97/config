@@ -77,7 +77,7 @@ USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
 
 /usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} &
 
-# Hive user & its priviledge initialization
+: '# Hive user & its priviledge initialization
 mysql < ${DOCKER_DIR}init.sql
 
 
@@ -89,7 +89,7 @@ else
   #hive_merastore creation
   ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema
 fi
-
+'
 
 # Wait for any process to exit
 wait -n
