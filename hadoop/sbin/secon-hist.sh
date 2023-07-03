@@ -49,7 +49,10 @@ source ~/.bashrc
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
 echo "port=3306" >> /etc/my.cnf >> /etc/my.cnf.d/mariadb-server.cnf 
 echo "bind-address=$(hostname)" >> /etc/my.cnf.d/mariadb-server.cnf 
-echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf.d/mariadb-server.cnf 
+echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf.d/mariadb-server.cnf
+echo "port=3306" >> /etc/my.cnf >> /etc/my.cnf
+echo "bind-address=$(hostname)" >> /etc/my.cnf
+echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf
 /usr/libexec/mariadbd --user=$USR &
 
 if [[ ! -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
