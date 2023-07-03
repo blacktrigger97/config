@@ -77,20 +77,6 @@ USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
 
 /usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --pid-file=${DOCKER_DIR}${MARIADB_DIR} --log-error=${DOCKER_DIR}${MARIADB_DIR}/logs &
 
-: '# Hive user & its priviledge initialization
-mysql < ${DOCKER_DIR}init.sql
-
-
-if [[ ! -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
-then
-  echo "DATABASE ALREADY EXISTS"
-else
-  echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
-  #hive_merastore creation
-  ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema
-fi
-'
-
 # Wait for any process to exit
 wait -n
 
