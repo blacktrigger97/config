@@ -52,15 +52,13 @@ echo "bind-address=$(hostname)" >> /etc/my.cnf
 echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf
 /usr/libexec/mariadbd --user=$USR &
 
-# Hive user & its priviledge initialization
-mysql < ${DOCKER_DIR}init.sql
-
-
 if [[ ! -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
 then
   echo "DATABASE ALREADY EXISTS"
 else
   echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
+  # Hive user & its priviledge initialization
+  mysql < ${DOCKER_DIR}init.sql
   #hive_merastore creation
   ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
 fi
