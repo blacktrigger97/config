@@ -62,7 +62,7 @@ then
 else
   echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
   # Hive user & its priviledge initialization
-  #mysql < ${DOCKER_DIR}init.sql
+  mysql < ${DOCKER_DIR}init.sql
   #hive_merastore creation
   ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
 fi
