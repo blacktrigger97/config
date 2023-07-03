@@ -41,8 +41,11 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
-
 /usr/sbin/crond
+
+USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
+/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --pid-file=${DOCKER_DIR}${MARIADB_DIR} --log-error=${DOCKER_DIR}${MARIADB_DIR}/logs &
+
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
@@ -72,10 +75,6 @@ else
    "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
    echo "JobHistory in initiated"
 fi
-
-USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
-
-/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --pid-file=${DOCKER_DIR}${MARIADB_DIR} --log-error=${DOCKER_DIR}${MARIADB_DIR}/logs &
 
 # Wait for any process to exit
 wait -n
