@@ -56,7 +56,7 @@ echo "bind-address=$(hostname)" >> /etc/my.cnf
 echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf
 /usr/libexec/mariadbd --user=$USR &
 
-if [[ ! -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
+if [[ -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
 then
   echo "DATABASE ALREADY EXISTS"
 else
