@@ -47,8 +47,8 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 source ~/.bashrc
 
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
-mysql_upgrade --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}/ --tmpdir=${DOCKER_DIR}${MARIADB_DIR}/tmp
-/usr/libexec/mariadbd --user=$USR &
+#mysql_upgrade --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}/ --tmpdir=${DOCKER_DIR}${MARIADB_DIR}/tmp
+#/usr/libexec/mariadbd --user=$USR &
 
 ## @description  usage info
 ## @audience     private
