@@ -49,6 +49,8 @@ source ~/.bashrc
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
 echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf.d/mariadb-server.cnf
 echo "tmpdir=${DOCKER_DIR}${MARIADB_DIR}/tmp" >> /etc/my.cnf.d/mariadb-server.cnf
+echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf
+echo "tmpdir=${DOCKER_DIR}${MARIADB_DIR}/tmp" >> /etc/my.cnf
 /usr/libexec/mariadbd --user=$USR &
 
 ## @description  usage info
