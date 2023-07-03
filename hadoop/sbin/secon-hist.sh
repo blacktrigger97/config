@@ -47,9 +47,10 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 source ~/.bashrc
 
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
-echo "port=3306" >> /etc/my.cnf >> /etc/my.cnf.d/mariadb-server.cnf 
-echo "bind-address=$(hostname)" >> /etc/my.cnf.d/mariadb-server.cnf 
-echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf.d/mariadb-server.cnf
+#echo "port=3306" >> /etc/my.cnf >> /etc/my.cnf.d/mariadb-server.cnf 
+#echo "bind-address=$(hostname)" >> /etc/my.cnf.d/mariadb-server.cnf 
+#echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf.d/mariadb-server.cnf
+mariadb-install-db --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}
 echo "port=3306" >> /etc/my.cnf >> /etc/my.cnf
 echo "bind-address=$(hostname)" >> /etc/my.cnf
 echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf
