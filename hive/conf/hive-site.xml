@@ -581,7 +581,7 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:mysql://secon-hist/hive_metastore</value>
+    <value>jdbc:mysql://secon-hist/hive_metastore;create=true</value>
     <!--<value>jdbc:derby:;databaseName=hive_metastore;create=true</value>-->
     <description>
       JDBC connect string for a JDBC metastore.
