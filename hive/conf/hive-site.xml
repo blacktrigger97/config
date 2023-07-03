@@ -566,7 +566,7 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionPassword</name>
-    <value></value>
+    <value>hive</value>
     <description>password to use against metastore database</description>
   </property>
   <property>
@@ -1125,7 +1125,7 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionUserName</name>
-    <value>hive</value>
+    <value>root</value>
     <description>Username to use against metastore database</description>
   </property>
   <property>
