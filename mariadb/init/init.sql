@@ -1,3 +1,3 @@
-CREATE USER 'hive'@'%' IDENTIFIED BY 'hive' password expire never with grant option;
-GRANT ALL ON *.* TO 'hive'@'%';
-flush privileges;
+CREATE USER 'hive'@'%' IDENTIFIED BY 'hive' password expire never;
+GRANT ALL PRIVILEGES ON *.* TO 'hive'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
