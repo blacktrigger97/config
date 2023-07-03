@@ -41,10 +41,12 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
+
 /usr/sbin/crond
 
-#USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
-#/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --pid-file=${DOCKER_DIR}${MARIADB_DIR} &
+USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
+mysql_install_db --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}/ --tmpdir=${DOCKER_DIR}${MARIADB_DIR}/tmp
+/usr/libexec/mariadbd --user=$USR &
 
 ## @description  usage info
 ## @audience     private
