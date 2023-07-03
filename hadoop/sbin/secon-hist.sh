@@ -75,7 +75,7 @@ fi
 
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
 
-/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} &
+/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --ldata=${DOCKER_DIR}${MARIADB_DIR} &
 
 : '# Hive user & its priviledge initialization
 mysql < ${DOCKER_DIR}init.sql
