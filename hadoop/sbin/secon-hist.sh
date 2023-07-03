@@ -44,6 +44,8 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 /usr/sbin/crond
 
+source ~/.bashrc
+
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
 mysql_install_db --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}/ --tmpdir=${DOCKER_DIR}${MARIADB_DIR}/tmp
 /usr/libexec/mariadbd --user=$USR &
@@ -52,8 +54,6 @@ mysql_install_db --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}/ --tmpdir=${D
 ## @audience     private
 ## @stability    evolving
 ## @replaceable  no
-
-source ~/.bashrc
 
 (crontab -l 2>/dev/null; echo "*/2 * * * * /root/hadoop/sbin/host-config.sh >/dev/null 2>&1") | crontab -
 
