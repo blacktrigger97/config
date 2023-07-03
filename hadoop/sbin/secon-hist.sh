@@ -44,7 +44,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/crond
 
 USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
-/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --pid-file=${DOCKER_DIR}${MARIADB_DIR} --log-error=${DOCKER_DIR}${MARIADB_DIR}/logs &
+/usr/libexec/mariadbd --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR} --pid-file=${DOCKER_DIR}${MARIADB_DIR} &
 
 ## @description  usage info
 ## @audience     private
