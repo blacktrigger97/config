@@ -1,2 +1,3 @@
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '';
+CREATE USER 'hive'@'%' IDENTIFIED BY 'hive' password expire never;
+GRANT ALL PRIVILEGES ON *.* TO 'hive'@'%' IDENTIFIED BY 'hive' WITH GRANT OPTION;
 FLUSH PRIVILEGES;

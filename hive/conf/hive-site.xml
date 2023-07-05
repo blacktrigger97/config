@@ -40,7 +40,7 @@
     <value>thrift://secon-hist:9083</value>
     <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
   </property>
-  <!--<property>
+  <property>
     <name>javax.jdo.option.ConnectionPassword</name>
     <value>hive</value>
     <description>password to use against metastore database</description>
@@ -49,7 +49,7 @@
     <name>hive.metastore.ds.connection.url.hook</name>
     <value/>
     <description>Name of the hook to use for retrieving the JDO connection URL. If empty, the value in javax.jdo.option.ConnectionURL is used</description>
-  </property>-->
+  </property>
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <value>jdbc:mysql://secon-hist/hive_metastore?createDatabaseIfNotExist=true</value>
@@ -61,7 +61,7 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionUserName</name>
-    <value>root</value>
+    <value>hive</value>
     <description>Username to use against metastore database</description>
   </property>
   <property>
