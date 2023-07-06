@@ -54,7 +54,7 @@ source ~/.bashrc
 
 touch ${DOCKER_DIR}hosts/hosts
 
-(crontab -l 2>/dev/null; echo "*/2 * * * * /root/hadoop/sbin/host-config.sh >/dev/null 2>&1") | crontab -
+(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh >/dev/null 2>&1") | crontab -
 
 # NameNode
 if [ ! -f /root/namenode/current ]; then
