@@ -46,15 +46,12 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 source ~/.bashrc
 
-USR=`echo ${DOCKER_DIR} | rev | cut -d "/" -f 2 | rev`
-#echo "port=3306" >> /etc/my.cnf >> /etc/my.cnf.d/mariadb-server.cnf 
-#echo "bind-address=$(hostname)" >> /etc/my.cnf.d/mariadb-server.cnf 
-#echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf.d/mariadb-server.cnf
-mariadb-install-db --user=$USR --datadir=${DOCKER_DIR}${MARIADB_DIR}
-echo "datadir=${DOCKER_DIR}${MARIADB_DIR}" >> /etc/my.cnf
-/usr/libexec/mariadbd --user=$USR &
+## @description  usage info
+## @audience     private
+## @stability    evolving
+## @replaceable  no
 
-if [[ -z "`mysql -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
+if [[ -z "`mysql -u hive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
 then
   echo "DATABASE ALREADY EXISTS"
 else
@@ -63,12 +60,7 @@ else
   mysql < ${DOCKER_DIR}init.sql
   #hive_merastore creation
   ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
-fi
-
-## @description  usage info
-## @audience     private
-## @stability    evolving
-## @replaceable  no
+fi    
 
 (crontab -l 2>/dev/null; echo "*/2 * * * * /root/hadoop/sbin/host-config.sh >/dev/null 2>&1") | crontab -
 
