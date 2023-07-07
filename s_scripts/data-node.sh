@@ -50,6 +50,8 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 source ~/.bashrc
 
+sh /root/s_scripts/host-config.sh
+
 (crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh >/dev/null 2>&1") | crontab -
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop

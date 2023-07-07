@@ -52,6 +52,8 @@ HADOOP_HDFS_HOME=/root/hadoop
 
 source ~/.bashrc
 
+sh /root/s_scripts/host-config.sh
+
 touch ${DOCKER_DIR}hosts/hosts
 
 (crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh >/dev/null 2>&1") | crontab -
