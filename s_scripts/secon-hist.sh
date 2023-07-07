@@ -55,6 +55,18 @@ sh /root/s_scripts/host-config.sh
 
 (crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh >/dev/null 2>&1") | crontab - 
 
+if [[ ! -z "`mysql -u hive -h mariadb -p hive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
+then
+  echo "DATABASE ALREADY EXISTS"
+else
+  echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
+  #hive_merastore creation
+  ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
+  if [ $? -ne 0 ]; then
+    exit 1
+  fi
+fi  
+
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 # Secondary NameNode
