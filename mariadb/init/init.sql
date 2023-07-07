@@ -1,3 +1,3 @@
-CREATE USER 'hive'@'%' IDENTIFIED BY 'hive' password expire never;
+CREATE OR REPLACE USER 'hive'@'%' IDENTIFIED BY 'hive' password expire never;
 GRANT ALL PRIVILEGES ON *.* TO 'hive'@'%' IDENTIFIED BY 'hive' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
