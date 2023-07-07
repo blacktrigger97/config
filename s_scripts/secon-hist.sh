@@ -53,6 +53,8 @@ source ~/.bashrc
 
 (crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh >/dev/null 2>&1") | crontab -
 
+sleep 130
+
 if [[ -z "`mysql -u hive -h mariadb -p hive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
 then
   echo "DATABASE ALREADY EXISTS"
