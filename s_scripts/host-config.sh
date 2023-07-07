@@ -18,7 +18,7 @@ do
 	echo $i
 	if [[ "$i" == "$(hostname)" ]]; then
 		echo "Updating shared hosts file"
-		sed -i -E "s/.*$(hostname)/$ip_addr\t$(hostname)/g" ${DOCKER_DIR}hosts/hosts
+		sed -ci -E "s/.*$(hostname)/$ip_addr\t$(hostname)/g" ${DOCKER_DIR}hosts/hosts
 	else
 		if [[ ! " ${host_addr[*]} " =~ " $i " ]]; then
 			echo "Adding other node to hosts file"
