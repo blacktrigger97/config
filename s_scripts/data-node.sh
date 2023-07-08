@@ -67,7 +67,7 @@ if [ $? != 0 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/tmp
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/jobhistory/{tmp,done}
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /root
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 0777 /root
 fi
 
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &

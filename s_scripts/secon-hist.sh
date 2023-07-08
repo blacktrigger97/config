@@ -88,7 +88,7 @@ else
    echo "JobHistory in initiated"
 fi
 
-#$HIVE_HOME/bin/hive --service hiveserver2 &
+$HIVE_HOME/bin/hive --service hiveserver2 &
 
 #$HIVE_HOME/bin/hive --service metastore &
 
