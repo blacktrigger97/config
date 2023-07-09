@@ -96,11 +96,11 @@ start-history-server.sh
 
 sleep 10
 
-$HIVE_HOME/bin/hive --service hiveserver2 &
+$HIVE_HOME/bin/hive --service metastore &
 
 sleep 10
 
-$HIVE_HOME/bin/hive --service metastore &
+$HIVE_HOME/bin/hive --service hiveserver2 &
 
 # Wait for any process to exit
 wait -n
