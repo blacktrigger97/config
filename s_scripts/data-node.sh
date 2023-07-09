@@ -59,6 +59,7 @@ sleep 60
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 # DataNode
+rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
 "${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
 
 sleep 20
