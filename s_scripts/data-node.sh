@@ -65,7 +65,7 @@ rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
 sleep 20
 
 # Create neccessary directory if not exists
-"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/jobhistory
+"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/tmp
 if [ $? -eq 0 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /tmp
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
