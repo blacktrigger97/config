@@ -96,7 +96,7 @@ $HIVE_HOME/bin/hive --service hiveserver2 &
 
 sleep 10
 
-#$HIVE_HOME/bin/hive --service metastore &
+$HIVE_HOME/bin/hive --service metastore &
 
 # Wait for any process to exit
 wait -n
