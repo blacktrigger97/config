@@ -66,9 +66,10 @@ sleep 20
 # Create neccessary directory if not exists
 "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/jobhistory
 if [ $? -eq 0 ]; then
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/tmp
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /tmp
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /root
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/logs
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /
 fi
 
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &
