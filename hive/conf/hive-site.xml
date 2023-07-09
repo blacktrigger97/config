@@ -83,9 +83,19 @@
     </description>
   </property>
   <property>
+    <name>hive.server2.thrift.bind.host</name>
+    <value/>
+    <description>Bind host on which to run the HiveServer2 Thrift service.</description>
+  </property>
+  <property>
     <name>hive.server2.thrift.http.port</name>
     <value>10001</value>
     <description>Port number of HiveServer2 Thrift interface when hive.server2.transport.mode is 'http'.</description>
+  </property>
+  <property>
+    <name>hive.server2.thrift.http.path</name>
+    <value>cliservice</value>
+    <description>Path component of URL endpoint when in HTTP mode.</description>
   </property>
   <property>
     <name>hive.metastore.schema.verification</name>
