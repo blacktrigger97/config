@@ -90,6 +90,8 @@ else
   fi
 fi  
 
+sleep 10
+
 $HIVE_HOME/bin/hive --service hiveserver2 &
 
 sleep 10
