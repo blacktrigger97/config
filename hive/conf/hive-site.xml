@@ -71,7 +71,7 @@
   </property>
   <property>
     <name>hive.metastore.warehouse.dir</name>
-    <value>hdfs://root/hive/warehouse</value>
+    <value>hdfs://name-res:9000/root/hive/warehouse</value>
     <description>location of default database for the warehouse</description>
   </property>
   <property>
@@ -89,7 +89,7 @@
   </property>
   <property>
     <name>hive.metastore.schema.verification</name>
-    <value>false</value>
+    <value>true</value>
     <description>
       Enforce metastore schema version consistency.
       True: Verify that version information stored in is compatible with one from Hive jars.  Also disable automatic
@@ -97,5 +97,10 @@
             proper metastore schema migration. (Default)
       False: Warn if the version information stored in metastore doesn't match with one from in Hive jars.
     </description>
+  </property>
+  <property>
+    <name>hive.cli.print.header</name>
+    <value>true</value>
+    <description>Whether to print the names of the columns in query output.</description>
   </property>
 </configuration>
