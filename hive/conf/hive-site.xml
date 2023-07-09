@@ -84,7 +84,7 @@
   </property>
   <property>
     <name>hive.server2.thrift.bind.host</name>
-    <value/>
+    <value>secon-hist</value>
     <description>Bind host on which to run the HiveServer2 Thrift service.</description>
   </property>
   <property>
