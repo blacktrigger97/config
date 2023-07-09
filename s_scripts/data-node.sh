@@ -58,18 +58,28 @@ sleep 60
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
-# DataNode
 rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
-"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
-
-sleep 20
 
 # Create neccessary directory if not exists
-"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/hive
-if [ $? -eq 1 ]; then
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/logs
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /
+if [[ "$(hostname)" == "data-node1" ]]; then
+	# DataNode
+	echo "Starting $(hostname)"
+	"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
+
+	sleep 30
+
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/hive
+	if [ $? -eq 1 ]; then
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/jars
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -put -f ${DOCKER_DIR}spark/jars/* /root/spark/jars/
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/logs
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /
+	fi
+else
+	echo "Data-Node 1 already up. Starting $(hostname)"
+	sleep 60
+	"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
 fi
 
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &
