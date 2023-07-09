@@ -65,9 +65,8 @@ rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
 sleep 20
 
 # Create neccessary directory if not exists
-#"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/hive
-#if [ $? -eq 0 ]; then
-if hdfs dfs -test -d /root/hive; then
+"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/hive
+if [ $? -eq 1 ]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/hive/warehouse
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/logs
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /

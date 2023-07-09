@@ -90,7 +90,7 @@ else
   fi
 fi
 
-sleep 10
+while ! hdfs dfs -test -d /root/spark/logs; do continue; done
 
 start-history-server.sh
 
