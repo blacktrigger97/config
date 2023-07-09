@@ -88,7 +88,9 @@ else
   if [ $? -ne 0 ]; then
     exit 1
   fi
-fi  
+fi
+
+start-history-server.sh
 
 sleep 10
 
@@ -98,9 +100,8 @@ sleep 10
 
 $HIVE_HOME/bin/hive --service metastore &
 
-#sleep 10
+sleep 10
 
-#start-history-server.sh &
 
 # Wait for any process to exit
 wait -n
