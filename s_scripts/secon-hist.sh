@@ -90,7 +90,11 @@ else
    echo "JobHistory in initiated"
 fi
 
+sleep 60
+
 $HIVE_HOME/bin/hive --service hiveserver2 &
+
+sleep 10
 
 #$HIVE_HOME/bin/hive --service metastore &
 
