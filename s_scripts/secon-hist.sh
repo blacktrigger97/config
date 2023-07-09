@@ -90,6 +90,8 @@ else
   fi
 fi
 
+sleep 10
+
 start-history-server.sh
 
 sleep 10
@@ -99,9 +101,6 @@ $HIVE_HOME/bin/hive --service hiveserver2 &
 sleep 10
 
 $HIVE_HOME/bin/hive --service metastore &
-
-sleep 10
-
 
 # Wait for any process to exit
 wait -n
