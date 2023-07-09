@@ -57,7 +57,7 @@ sh /root/s_scripts/host-config.sh
 
 sleep 40
 
-if [[ -z "`mysql -u hive -h mariadb -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
+if [[ ! -z "`mysql -u hive -h mariadb -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
 then
   echo "DATABASE ALREADY EXISTS"
 else
