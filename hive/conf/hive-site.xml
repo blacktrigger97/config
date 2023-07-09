@@ -76,7 +76,7 @@
   </property>
   <property>
     <name>hive.server2.transport.mode</name>
-    <value>binary</value>
+    <value>http</value>
     <description>
       Expects one of [binary, http].
       Transport mode of HiveServer2.
