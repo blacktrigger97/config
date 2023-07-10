@@ -144,4 +144,8 @@
     <name>datanucleus.autoStartMechanismMode</name>
     <value>false</value>
   </property>
+  <property>
+    <name>datanucleus.fixedDatastore</name>
+    <value>true</value>
+  </property>
 </configuration>
