@@ -137,7 +137,11 @@
     </description>
   </property>
   <property>
-  <name>spark.yarn.jars</name>
-  <value>hdfs://name-res:9000/spark/jars/*</value>
-</property>
+    <name>spark.yarn.jars</name>
+    <value>hdfs://name-res:9000/spark/jars/*</value>
+  </property>
+  <property>
+    <name>datanucleus.autoStartMechanismMode</name>
+    <value>true</value>
+  </property>
 </configuration>

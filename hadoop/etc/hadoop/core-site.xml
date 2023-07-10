@@ -18,28 +18,27 @@
 
 <configuration>
 	<property>
-                <name>fs.defaultFS</name>
-                <value>hdfs://name-res:9000</value>
-        </property>
-
+    <name>fs.defaultFS</name>
+    <value>hdfs://name-res:9000</value>
+  </property>
 	<property>
-                <name>hadoop.tmp.dir</name>
+    <name>hadoop.tmp.dir</name>
 		<value>/root/hadoop/tmp</value>
 	</property>
   <property>
-                <name>hadoop.proxyuser.hue.hosts</name>
-		<value>*</value>
-	</property>
-        <property>
-                <name>hadoop.proxyuser.hue.groups</name>
+    <name>hadoop.proxyuser.hue.hosts</name>
 		<value>*</value>
 	</property>
   <property>
-                <name>hadoop.proxyuser.hive.hosts</name>
+    <name>hadoop.proxyuser.hue.groups</name>
 		<value>*</value>
 	</property>
-        <property>
-                <name>hadoop.proxyuser.hive.groups</name>
+  <property>
+    <name>hadoop.proxyuser.hive.hosts</name>
+		<value>*</value>
+	</property>
+  <property>
+    <name>hadoop.proxyuser.hive.groups</name>
 		<value>*</value>
 	</property>
 </configuration>
