@@ -85,7 +85,7 @@
 
   <property>
     <name>hive.server2.transport.mode</name>
-    <value>http</value>
+    <value>binary</value>
     <description>
       Expects one of [binary, http].
       Transport mode of HiveServer2.
@@ -100,14 +100,8 @@
 
   <property>
     <name>hive.server2.thrift.http.port</name>
-    <value>10001</value>
+    <value>10000</value>
     <description>Port number of HiveServer2 Thrift interface when hive.server2.transport.mode is 'http'.</description>
-  </property>
-
-  <property>
-    <name>hive.server2.thrift.http.path</name>
-    <value>cliservice</value>
-    <description>Path component of URL endpoint when in HTTP mode.</description>
   </property>
 
   <property>
@@ -204,17 +198,6 @@
   <property>
     <name>datanucleus.autoCreateSchema</name>
     <value>false</value>
-  </property>
-
-  <property>
-    <name>datanucleus.autoStartMechanismMode</name>
-    <value>checked</value>
-    <description>throw exception if metadata tables are incorrect</description>
-  </property>
-
-  <property>
-    <name>datanucleus.autoStartMechanism</name>
-    <value>SchemaTable</value>
   </property>
 
   <property>
