@@ -78,6 +78,18 @@
   </property>
 
   <property>
+    <name>hive.metastore.try.direct.sql.ddl</name>
+    <value>true</value>
+    <description>
+      Same as hive.metastore.try.direct.sql, for read statements within a transaction that
+      modifies metastore data. Due to non-standard behavior in Postgres, if a direct SQL
+      select query has incorrect syntax or something similar inside a transaction, the
+      entire transaction will fail and fall-back to DataNucleus will not be possible. You
+      should disable the usage of direct SQL inside transactions if that happens in your case.
+    </description>
+  </property>
+
+  <property>
     <name>hive.metastore.warehouse.dir</name>
     <value>hdfs://name-res:9000/root/hive/warehouse</value>
     <description>location of default database for the warehouse</description>
@@ -228,7 +240,6 @@
     <value>datanucleus1</value>
     <description>Name of the identifier factory to use when generating table/column names etc. 'datanucleus1' is used for backward  compatibility with DataNucleus v1</description>
   </property>
-
 
   <property>
     <name>datanucleus.plugin.pluginRegistryBundleCheck</name>
