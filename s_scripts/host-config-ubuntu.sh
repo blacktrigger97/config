@@ -28,9 +28,9 @@ do
 		else
 			echo "Updating hosts file"
 			upd_addr=`cat ${DOCKER_DIR}hosts/hosts | grep -E $i | awk '{print $1}'`
-			cp /etc/hosts ~/hosts.new
-			sed -i -E "s/.*$i/$upd_addr\t$i/g" ~/hosts.new
-			cp -f ~/hosts.new /etc/hosts
+			cp /etc/hosts ${DOCKER_DIR}hosts.new
+			sed -i -E "s/.*$i/$upd_addr\t$i/g" ${DOCKER_DIR}hosts.new
+			cp -f ${DOCKER_DIR}hosts.new /etc/hosts
 		fi
 	fi
 done
