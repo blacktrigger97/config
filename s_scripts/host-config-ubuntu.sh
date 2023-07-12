@@ -3,7 +3,6 @@
 #
 source ~/.bashrc
 
-(crontab -l 2>/dev/null; echo "*/2 * * * * . ${DOCKER_DIR}/.bashrc; cd ${DOCKER_DIR}/s_scripts && ./host-config-ubuntu.sh > /hosts.log 2>&1") | crontab -
 service cron reload
 
 ip_addr=`ifconfig eth0 | grep 'inet ' | awk '{print $2}'`
