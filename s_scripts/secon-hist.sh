@@ -78,7 +78,11 @@ fi
 
 sleep 120
 
-if [[ ! -z "`mysql -u hive -h mysql -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" 2>&1`" ]];
+mysql -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" > mysql_tst.log
+
+hive_db=`head -1 mysql_tst.log | awk '{print $1;}'`
+
+if [[ "$hive_db" == "hive_metastore" ]];
 then
   echo "DATABASE ALREADY EXISTS"
 else
