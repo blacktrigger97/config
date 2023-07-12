@@ -4818,7 +4818,7 @@
   </property>
   <property>
     <name>hive.server2.enable.doAs</name>
-    <value>true</value>
+    <value>false</value>
     <description>
       Setting this property to true will have HiveServer2 execute
       Hive operations as the user making the calls to it.
@@ -6920,5 +6920,13 @@
       This is a performance optimization that forces the final FileSinkOperator to write to the blobstore.
       See HIVE-15121 for details.
     </description>
+  </property>
+  <property>
+    <name>system:java.io.tmpdir</name>
+    <value>/tmp/hive/java</value>
+  </property>
+  <property>
+    <name>system:user.name</name>
+    <value>${user.name}</value>
   </property>
 </configuration>
