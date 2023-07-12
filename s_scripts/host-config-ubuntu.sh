@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 #
-source ~/.bashrc
+source ${DOCKER_DIR}/.bashrc
 
 service cron reload
 
