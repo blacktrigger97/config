@@ -3,7 +3,7 @@
 #
 source ~/.bashrc
 
-ip_addr=`/usr/sbin/ifconfig eth0 | grep 'inet ' | awk '{print $2}'`
+ip_addr=`ifconfig eth0 | grep 'inet ' | awk '{print $2}'`
 
 cat /etc/hosts | grep -E $(hostname)*
 if [ $? -eq 1 ]; then
