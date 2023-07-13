@@ -76,7 +76,7 @@ else
    echo "JobHistory in initiated"
 fi
 
-sleep 120
+sleep 150
 
 mysql -u hive -h mysql -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" > mysql_tst.log
 
