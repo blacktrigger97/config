@@ -6929,4 +6929,8 @@
     <name>system:user.name</name>
     <value>${user.name}</value>
   </property>
+  <property>
+  <name>spark.yarn.jars</name>
+  <value>hdfs://name-res:9000/root/spark/jars/*</value>
+</property>
 </configuration>
