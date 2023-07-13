@@ -42,8 +42,8 @@
 		<value>/root/jobhistory/done</value>
 	</property>
         
-        <property>
+        <!--<property>
                 <name>mapred.job.queue.name</name>
 		<value>root.root</value>
-	</property>
+	</property>-->
 </configuration>
