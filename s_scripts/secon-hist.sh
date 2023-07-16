@@ -76,23 +76,23 @@ else
    echo "JobHistory in initiated"
 fi
 
-sleep 150
+#sleep 150
 
-mysql -u hive -h mysql -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" > mysql_tst.log
+#mysql -u hive -h mysql -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" > mysql_tst.log
 
-hive_db=`head -1 mysql_tst.log | awk '{print $1;}'`
+#hive_db=`head -1 mysql_tst.log | awk '{print $1;}'`
 
-if [[ "$hive_db" == "hive_metastore" ]];
-then
-  echo "DATABASE ALREADY EXISTS"
-else
-  echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
+#if [[ "$hive_db" == "hive_metastore" ]];
+#then
+#  echo "DATABASE ALREADY EXISTS"
+#else
+#  echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
   #hive_merastore creation
-  ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
-  if [ $? -ne 0 ]; then
-    exit 1
-  fi
-fi
+#  ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
+#  if [ $? -ne 0 ]; then
+#    exit 1
+#  fi
+#fi
 
 while ! "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/spark/logs; do continue; done
 
