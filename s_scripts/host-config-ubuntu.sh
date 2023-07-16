@@ -53,6 +53,6 @@ if [[ ! " ${hdc_addr[*]} " =~ " $(hostname) " ]]; then
 fi
 
 awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts/hosts
-cp /etc/hosts ${DOCKER_DIR}hosts.new
+cp -f /etc/hosts ${DOCKER_DIR}hosts.new
 awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts.new
 cp -f ${DOCKER_DIR}hosts.new /etc/hosts
