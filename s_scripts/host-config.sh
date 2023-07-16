@@ -44,3 +44,4 @@ if [[ ! " ${hdc_addr[*]} " =~ " $(hostname) " ]]; then
 fi
 
 awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts/hosts
+awk -i inplace '!seen[$0]++' /etc/hosts
