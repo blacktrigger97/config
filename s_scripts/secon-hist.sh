@@ -53,7 +53,7 @@ source ~/.bashrc
 
 sh /root/s_scripts/host-config.sh
 
-(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh >/dev/null 2>&1") | crontab - 
+(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh 2>&1 > ${DOCKER_DIR}s_scripts/hosts.log") | crontab - 
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
