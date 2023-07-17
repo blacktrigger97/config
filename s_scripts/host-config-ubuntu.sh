@@ -52,7 +52,7 @@ if [[ ! " ${hdc_addr[*]} " =~ " $(hostname) " ]]; then
 	echo -e "$ip_addr\t$(hostname)" >> ${DOCKER_DIR}hosts/hosts
 fi
 
-awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts/hosts
-cp -f /etc/hosts ${DOCKER_DIR}hosts.new
-awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts.new
-cp -f ${DOCKER_DIR}hosts.new /etc/hosts
+#awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts/hosts
+#cp -f /etc/hosts ${DOCKER_DIR}hosts.new
+#awk -i inplace '!seen[$0]++' ${DOCKER_DIR}hosts.new
+#cp -f ${DOCKER_DIR}hosts.new /etc/hosts
