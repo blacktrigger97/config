@@ -42,17 +42,17 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
 
-/usr/sbin/crond
+#/usr/sbin/crond
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
 ## @replaceable  no
 
-source ~/.bashrc
+#source ~/.bashrc
 
-sh /root/s_scripts/host-config.sh
+#sh /root/s_scripts/host-config.sh
 
-(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
+#(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 sleep 60
 
@@ -64,11 +64,11 @@ rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
 if [[ "$(hostname)" == "data-node1" ]]; then
 	# DataNode
 	echo "Starting $(hostname)"
-	"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
+	"${HADOOP_HDFS_HOME}/bin/hdfs" datanode &
 
 	sleep 30
 
-	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/hive
+	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/spark
 	if [ $? -eq 1 ]; then
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/iceberg/warehouse
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/nessie/warehouse

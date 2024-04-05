@@ -42,7 +42,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
 
-/usr/sbin/crond
+#/usr/sbin/crond
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
@@ -50,13 +50,13 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 HADOOP_HDFS_HOME=/root/hadoop
 
-source ~/.bashrc
+#source ~/.bashrc
 
-sh /root/s_scripts/host-config.sh
+#sh /root/s_scripts/host-config.sh
 
-touch ${DOCKER_DIR}hosts/hosts
+#touch ${DOCKER_DIR}hosts/hosts
 
-(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
+#(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # NameNode
 if [ ! -f /root/namenode/current ]; then

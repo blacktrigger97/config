@@ -42,18 +42,18 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
 
-/usr/sbin/crond
+#/usr/sbin/crond
 
-source ~/.bashrc
+#source ~/.bashrc
 
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
 ## @replaceable  no 
 
-sh /root/s_scripts/host-config.sh
+#sh /root/s_scripts/host-config.sh
 
-(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab - 
+#(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab - 
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
