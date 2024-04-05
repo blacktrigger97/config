@@ -48,9 +48,9 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no
 
-HADOOP_HDFS_HOME=/root/hadoop
+source ~/.bashrc
 
-#source ~/.bashrc
+HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 #sh /root/s_scripts/host-config.sh
 
@@ -59,9 +59,9 @@ HADOOP_HDFS_HOME=/root/hadoop
 #(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # NameNode
-if [ ! -f /root/namenode/current ]; then
+if [ ! -f ${DOCKER_DIR}namenode/current ]; then
 	echo "Namenode Format"
-	/root/hadoop/bin/hdfs namenode -format -force
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -force
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
 else
 	echo "Checkpoint recovery"

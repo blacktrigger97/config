@@ -44,7 +44,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 #/usr/sbin/crond
 
-#source ~/.bashrc
+source ~/.bashrc
 
 ## @description  usage info
 ## @audience     private

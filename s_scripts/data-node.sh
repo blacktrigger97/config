@@ -48,7 +48,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no
 
-#source ~/.bashrc
+source ~/.bashrc
 
 #sh /root/s_scripts/host-config.sh
 
