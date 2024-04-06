@@ -54,6 +54,8 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 cp /etc/hosts ${DOCKER_DIR}hosts_bkp
 
+touch ${DOCKER_DIR}hosts
+
 sh ${DOCKER_DIR}s_scripts/host-upd.sh
 
 (crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
