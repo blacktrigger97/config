@@ -37,25 +37,30 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
+ls
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+ls
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+ls
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+ls
 /usr/sbin/sshd
-
+ls
 /usr/sbin/crond
+ls
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
 ## @replaceable  no
 
 source ~/.bashrc
-
+ls
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
-
+ls
 cp /etc/hosts ${DOCKER_DIR}hosts_bkp
-
+ls
 sh ${DOCKER_DIR}s_scripts/host-upd.sh
-
+ls
 (crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # NameNode
