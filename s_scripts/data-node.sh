@@ -48,7 +48,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no
 
-echo "name-res	192.168.1.41" >> /etc/hosts
+echo "192.168.1.41	name-res" >> /etc/hosts
 
 source ~/.bashrc
 
