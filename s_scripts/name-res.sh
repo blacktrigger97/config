@@ -42,7 +42,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
 
-#/usr/sbin/crond
+/usr/sbin/crond
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
@@ -52,11 +52,11 @@ source ~/.bashrc
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
-#sh /root/s_scripts/host-config.sh
+cp /etc/hosts ${DOCKER_DIR}hosts_bkp
 
-#touch ${DOCKER_DIR}hosts/hosts
+sh ${DOCKER_DIR}s_scripts/host-upd.sh
 
-#(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
+(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # NameNode
 if [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then

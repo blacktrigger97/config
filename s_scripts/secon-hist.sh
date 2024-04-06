@@ -42,20 +42,21 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
 
-#/usr/sbin/crond
-
-source ~/.bashrc
-
+/usr/sbin/crond
 ## @description  usage info
 ## @audience     private
 ## @stability    evolving
 ## @replaceable  no 
 
-#sh /root/s_scripts/host-config.sh
-
-#(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab - 
+source ~/.bashrc
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
+
+cp /etc/hosts ${DOCKER_DIR}hosts_bkp
+
+sh ${DOCKER_DIR}s_scripts/host-upd.sh
+
+(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # Secondary NameNode
 if [[ "$(hostname)" != "secon-hist" ]]; then
