@@ -26,4 +26,4 @@ fi
 
 for i in "${!arry[@]}"; do printf "%s\t%s\n" "${arry[i]}" "${arry2[i]}" >> ${DOCKER_DIR}hosts; done
 
-cat ${DOCKER_DIR}hosts > /etc/hosts
+cp -f ${DOCKER_DIR}hosts > /etc/hosts
