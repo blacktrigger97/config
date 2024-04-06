@@ -59,7 +59,7 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 #(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # NameNode
-if [ ! -f ${DOCKER_DIR}namenode/current ]; then
+if [ ! -f ${DOCKER_DIR}${$LOCAL_NAMENODE_DIR}/current ]; then
 	echo "Namenode Format"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -force
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
