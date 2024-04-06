@@ -56,7 +56,7 @@ source ~/.bashrc
 
 #(crontab -l 2>/dev/null; echo "*/2 * * * * /root/s_scripts/host-config.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
-sleep 60
+#sleep 60
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
