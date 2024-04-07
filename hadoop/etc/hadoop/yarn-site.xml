@@ -27,22 +27,22 @@
 
 	<property>
                 <name>yarn.resourcemanager.address</name>
-                <value>name-res:8032</value>
+                <value>name-res.bdc.home:8032</value>
         </property>
 	
 	<property>
                 <name>yarn.resourcemanager.scheduler.address</name>
-                <value>name-res:8030</value>
+                <value>name-res.bdc.home:8030</value>
         </property>
 
 	<property>
                 <name>yarn.resourcemanager.resource-tracker.address</name>
-                <value>name-res:8031</value>
+                <value>name-res.bdc.home:8031</value>
         </property>
 
 	<property>
                 <name>yarn.resourcemanager.webapp.address</name>
-                <value>name-res:8088</value>
+                <value>name-res.bdc.home:8088</value>
         </property>
 
 	<property>
