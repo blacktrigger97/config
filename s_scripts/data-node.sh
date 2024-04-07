@@ -63,7 +63,7 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
 
 # Create neccessary directory if not exists
-if [[ "$(hostname)" == "data-node1" ]]; then
+if [[ "$(hostname)" == "data-node1.bdc.home" ]]; then
 	# DataNode
 	echo "Starting $(hostname)"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" datanode &
