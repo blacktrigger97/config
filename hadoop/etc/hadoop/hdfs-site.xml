@@ -80,4 +80,8 @@
                 <name>dfs.webhdfs.enabled</name>
 		<value>true</value>
 	</property>
+        <property>
+                <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+		<value>true</value>
+	</property>
 </configuration>
