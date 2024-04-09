@@ -97,7 +97,7 @@ fi
 
 while ! "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/spark/logs; do continue; done
 
-start-history-server.sh
+#start-history-server.sh
 
 #sleep 10
 
