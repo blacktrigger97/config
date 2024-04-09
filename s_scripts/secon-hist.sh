@@ -70,7 +70,7 @@ fi
 sleep 10
 
 # Job History Server
-if [[ "$(hostname)" != "secon-hist" ]]; then
+if [[ "$(hostname)" != "secon-hist.bdc.home" ]]; then
    echo "JobHistory is already up"
 else
    "${HADOOP_HDFS_HOME}/bin/mapred"  historyserver &
@@ -97,7 +97,7 @@ fi
 
 while ! "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/spark/logs; do continue; done
 
-#start-history-server.sh
+#  start-history-server.sh
 
 #sleep 10
 
