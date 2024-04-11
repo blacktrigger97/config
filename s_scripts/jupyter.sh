@@ -5,7 +5,7 @@ source ~/.bashrc
 
 rm -f nohup.out
 
-pyspark
+nohup pyspark &
 
 # Wait for any process to exit
 wait -n
