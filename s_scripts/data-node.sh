@@ -76,6 +76,7 @@ if [[ "$(hostname)" == "data-node1.bdc.home" ]]; then
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/nessie/warehouse
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/jars
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -put -f ${DOCKER_DIR}spark/jars/* /root/spark/jars/
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -put -f ${DOCKER_DIR}spark/yarn/* /root/spark/jars/
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/logs
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /tmp/datasets
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -chmod -R 777 /
