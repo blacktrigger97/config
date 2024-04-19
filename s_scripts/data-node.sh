@@ -72,6 +72,7 @@ if [[ "$(hostname)" == "data-node1.bdc.home" ]]; then
 
 	"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /root/spark
 	if [ $? -eq 1 ]; then
+		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /user
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/iceberg/warehouse
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/nessie/warehouse
 		"${HADOOP_HDFS_HOME}/bin/hdfs" dfs -mkdir -p /root/spark/jars
