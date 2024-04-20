@@ -34,12 +34,12 @@
 
 	<property>
                 <name>mapreduce.jobhistory.intermediate-done-dir</name>
-		<value>/root/jobhistory/tmp</value>
+		<value>/user/root/jobhistory/tmp</value>
         </property>
 	
 	<property>
                 <name>mapreduce.jobhistory.done-dir</name>
-		<value>/root/jobhistory/done</value>
+		<value>/user/root/jobhistory/done</value>
 	</property>
         
         <!--<property>
