@@ -67,7 +67,7 @@
 
 	<property>
                 <name>yarn.scheduler.maximum-allocation-vcores</name>
-                <value>4</value>
+                <value>6</value>
 	</property>
 
 </configuration>
