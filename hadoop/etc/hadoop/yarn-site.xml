@@ -57,7 +57,7 @@
 
 	<property>
                 <name>yarn.scheduler.maximum-allocation-mb</name>
-                <value>16384</value>
+                <value>32768</value>
         </property>
 
 	<property>
