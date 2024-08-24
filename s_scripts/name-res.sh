@@ -78,6 +78,11 @@ sleep 30
 "${HADOOP_HDFS_HOME}/bin/yarn"  resourcemanager &
 echo "Resource manager initiated"
 
+# Airflow Webserver
+# /usr/local/bin/airflow webserver -D --access-logfile=/root/logs/airflow/webserver/webserver_access.log --error-logfile=/root/logs/airflow/webserver/webserver_error.log &
+
+# Airflow Scheduler
+# /usr/local/bin/airflow scheduler -D &
 
 # Wait for any process to exit
 wait -n

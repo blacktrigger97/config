@@ -86,8 +86,11 @@ else
 	"${HADOOP_HDFS_HOME}/bin/hdfs"  datanode &
 fi
 
+# Node Manager
 "${HADOOP_HDFS_HOME}/bin/yarn"  nodemanager &
 
+# Airflow Worker
+# /usr/local/bin/airflow celery worker -D &
 
 # Wait for any process to exit
 wait -n
