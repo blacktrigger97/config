@@ -50,6 +50,9 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 source ~/.bashrc
 
+# Airflow Worker
+aflc worker
+
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 #cp /etc/hosts ${DOCKER_DIR}hosts_bkp

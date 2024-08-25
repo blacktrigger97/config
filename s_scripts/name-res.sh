@@ -50,6 +50,15 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 source ~/.bashrc
 
+# Airflow Webserver
+afl webserver
+
+# Airflow Scheduler
+afl scheduler
+
+# Airflow Flower
+aflc flower
+
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 #cp /etc/hosts ${DOCKER_DIR}hosts_bkp
@@ -78,11 +87,8 @@ sleep 30
 "${HADOOP_HDFS_HOME}/bin/yarn"  resourcemanager &
 echo "Resource manager initiated"
 
-# Airflow Webserver
-# /usr/local/bin/airflow webserver -D --access-logfile=/root/logs/airflow/webserver/webserver_access.log --error-logfile=/root/logs/airflow/webserver/webserver_error.log &
-
-# Airflow Scheduler
-# /usr/local/bin/airflow scheduler -D &
+# Airflow Triggerer
+afl triggerer &
 
 # Wait for any process to exit
 wait -n
