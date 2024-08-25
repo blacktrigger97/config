@@ -51,7 +51,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 source ~/.bashrc
 
 # Airflow Worker
-timeout 10 bash -c 'aflc worker'
+timeout 20 airflow celery worker -l=/root/logs/airflow/worker/worker.log --stderr=/root/logs/airflow/worker/worker.err --stdout=/root/logs/airflow/worker/worker.out --pid=/run/airflow/airflow-worker.pid -D
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
