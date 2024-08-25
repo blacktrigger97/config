@@ -51,7 +51,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 source ~/.bashrc
 
 # Airflow Worker
-timeout 10 aflc worker
+timeout 10 bash -c 'aflc worker'
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 

@@ -46,14 +46,20 @@ source ~/.bashrc
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
+# Airflow Initialize Database
+timeout 20 airflow db migrate
+
+# Airflow Admin Creation
+timeout 20 airflow users create -e blacktrigger97@gmail.com -f Airflow -l Admin -u admin -p admin_123 -r Admin
+
 # Airflow Webserver
-timeout 10 afl webserver
+timeout 10 bash -c 'afl webserver'
 
 # Airflow Scheduler
-timeout 10 afl scheduler
+timeout 10 bash -c 'afl scheduler'
 
 # Airflow Flower
-timeout 10 aflc flower
+timeout 10 bash -c 'aflc flower'
 
 # NameNode
 if [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
