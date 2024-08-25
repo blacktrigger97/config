@@ -82,7 +82,7 @@ sleep 30
 echo "Resource manager initiated"
 
 # Airflow Triggerer
-afl triggerer &
+airflow triggerer -l=/root/logs/airflow/triggerer/triggerer.log --stderr=/root/logs/airflow/triggerer/triggerer.err --stdout=/root/logs/airflow/triggerer/triggerer.out --pid=/run/airflow/airflow-triggerer.pid &
 
 # Wait for any process to exit
 wait -n
