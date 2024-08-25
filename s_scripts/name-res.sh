@@ -42,30 +42,18 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 /usr/sbin/sshd
 
-#/usr/sbin/crond
-## @description  usage info
-## @audience     private
-## @stability    evolving
-## @replaceable  no
-
 source ~/.bashrc
-
-# Airflow Webserver
-afl webserver
-
-# Airflow Scheduler
-afl scheduler
-
-# Airflow Flower
-aflc flower
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
-#cp /etc/hosts ${DOCKER_DIR}hosts_bkp
+# Airflow Webserver
+timeout 10 afl webserver
 
-#sh ${DOCKER_DIR}s_scripts/host-upd.sh
+# Airflow Scheduler
+timeout 10 afl scheduler
 
-#(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
+# Airflow Flower
+timeout 10 aflc flower
 
 # NameNode
 if [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
