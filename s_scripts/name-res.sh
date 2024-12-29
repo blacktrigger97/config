@@ -18,18 +18,34 @@ source ~/.bashrc
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 # NameNode
-if [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
-	echo "Namenode Format"
-	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -force
-	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
-else
-	echo "Checkpoint recovery"
-	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode --importCheckpoint &
-	if [ $? -ne 0 ]; then
-		echo "Manual recovery"
-		"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -recover &
-	fi
+# if [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
+# 	echo "Namenode Format"
+# 	"${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start journalnode
+# 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -clusterid "hbdc"
+# 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -initializeSharedEdits -force
+# 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
+# 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
+# else
+# 	echo "Checkpoint recovery"
+# 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode --importCheckpoint &
+# 	if [ $? -ne 0 ]; then
+# 		"${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start journalnode
+# 		echo "Manual recovery"
+# 		"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
+# 		"${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start namenode &
+# 	fi
+# fi
+
+"${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start journalnode
+
+if [[ "$(hostname)" == "name-res1.bdc.home" ]]; then
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -clusterid "hbdc"
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -initializeSharedEdits -force
 fi
+
+"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
+"${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
+
 
 sleep 30
 
