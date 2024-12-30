@@ -37,6 +37,7 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 # fi
 
 "${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start journalnode
+"${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start httpfs
 
 if [[ "$(hostname)" == "name-res1.bdc.home" ]]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -clusterid "hbdc"
