@@ -39,12 +39,13 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 "${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start journalnode
 "${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start httpfs
 
-if [[ "$(hostname)" == "name-res1.bdc.home" ]]; then
+if [[ "$(hostname)" == "name-res1.bdc.home" ] && [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]]; then
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -clusterid "hbdc"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -initializeSharedEdits -force
+else
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
 fi
 
-"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
 "${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
 
 
