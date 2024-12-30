@@ -49,8 +49,7 @@ else
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
 fi
 
-"${HADOOP_HDFS_HOME}/bin/hdfs" zkfc -formatZK -force
-"${HADOOP_HDFS_HOME}/bin/hdfs" zkfc -formatZK -force
+"${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start zkfc
 "${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
 
 
