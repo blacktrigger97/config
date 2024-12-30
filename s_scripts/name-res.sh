@@ -43,11 +43,13 @@ if [ "$(hostname)" == "name-res1.bdc.home" ] && [ ! -d ${DOCKER_DIR}${LOCAL_NAME
 	echo "New Cluster Setup"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -force -clusterid "hbdc"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -initializeSharedEdits -force
+	"${HADOOP_HDFS_HOME}/bin/hdfs" zkfc -formatZK -force
 else
 	echo "General Setup"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -bootstrapStandby
 fi
 
+"${HADOOP_HDFS_HOME}/bin/hdfs" zkfc -formatZK -force
 "${HADOOP_HDFS_HOME}/bin/hdfs" zkfc -formatZK -force
 "${HADOOP_HDFS_HOME}/bin/hdfs" namenode &
 
