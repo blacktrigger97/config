@@ -39,7 +39,7 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 "${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start journalnode
 "${HADOOP_HDFS_HOME}/bin/hdfs" --daemon start httpfs
 
-if [ "$(hostname)" == "name-res1.bdc.home" ] && [ ! -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
+if [ "$(hostname)" == "name-res1.bdc.home" ] && ![ -f ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
 	echo "New Cluster Setup"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -clusterid "hbdc"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -initializeSharedEdits -force
