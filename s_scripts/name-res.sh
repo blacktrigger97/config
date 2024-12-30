@@ -41,7 +41,7 @@ HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
 if [ "$(hostname)" == "name-res1.bdc.home" ] && [ ! -d ${DOCKER_DIR}${LOCAL_NAMENODE_DIR}/current ]; then
 	echo "New Cluster Setup"
-	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -clusterid "hbdc"
+	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -format -force -clusterid "hbdc"
 	"${HADOOP_HDFS_HOME}/bin/hdfs" namenode -initializeSharedEdits -force
 else
 	echo "General Setup"
