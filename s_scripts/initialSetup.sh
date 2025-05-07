@@ -1,7 +1,14 @@
 #!/bin/sh
 
-:'
-apk add wget rsync
+ssh-keygen
+
+sed -i s/#http/http/g /etc/apk/repositories
+
+apk add rsync curl bind-tools docker docker-cli-compose git github-cli
+
+rc-update add docker boot
+
+rc-service docker start
 
 source /root/.profile
 
@@ -74,7 +81,7 @@ mv spark/conf/spark-defaults.conf.template spark/conf/spark-defaults.conf
 mv spark/conf/spark-env.sh.template spark/conf/spark-env.sh
 
 echo "export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop" >> spark/conf/spark-env.sh
-'
+
 rsync -avru config/hadoop/ hadoop
 
 rsync -avru config/spark/ spark
