@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ash
 
 HDFS_DATANODE_USER=root
 HDFS_DATANODE_SECURE_USER=hdfs
