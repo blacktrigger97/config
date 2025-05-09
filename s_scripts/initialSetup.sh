@@ -78,7 +78,7 @@ wget https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/${KAFKA_CLIEN
 wget https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}/${SPARK_VERSION}/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}-${SPARK_VERSION}.jar -P spark/jars/
 
 
-echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk" >> hadoop/etc/hadoop/hadoop-env.sh
+echo "export JAVA_HOME=/usr/lib/jvm/zulu11/" >> hadoop/etc/hadoop/hadoop-env.sh
 
 mv spark/conf/spark-defaults.conf.template spark/conf/spark-defaults.conf
 
