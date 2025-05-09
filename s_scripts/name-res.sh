@@ -13,16 +13,16 @@ HDFS_SECONDARYNAMENODE_USER=root
 source ~/.profile
 
 # Airflow Webserver
-afl webserver
+# afl webserver
 
 # Airflow Scheduler
-afl scheduler
+# afl scheduler
 
 # Airflow Triggerer
-afl triggerer &
+# afl triggerer &
 
 # Airflow Flower
-aflc flower
+# aflc flower
 
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
