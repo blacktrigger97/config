@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.bashrc
+source ~/.profile
 
 # Airflow Initialize Database
 timeout 20 airflow db migrate

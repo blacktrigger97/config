@@ -37,10 +37,10 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
-/usr/sbin/sshd
+# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+# ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+# ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+# /usr/sbin/sshd
 
 #/usr/sbin/crond
 ## @description  usage info
@@ -48,20 +48,12 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no
 
-source ~/.bashrc
+source ~/.profile
 
 # Airflow Worker
-timeout 20 airflow celery worker -l=/root/logs/airflow/worker/worker.log --stderr=/root/logs/airflow/worker/worker.err --stdout=/root/logs/airflow/worker/worker.out --pid=/run/airflow/airflow-worker.pid -D
+timeout 20 aflc worker
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
-
-#cp /etc/hosts ${DOCKER_DIR}hosts_bkp
-
-#sh ${DOCKER_DIR}s_scripts/host-upd.sh
-
-#(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
-
-#sleep 60
 
 rm -rf ${DOCKER_DIR}${DOCKER_DATANODE_DIR}/*
 

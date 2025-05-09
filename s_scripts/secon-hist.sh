@@ -37,10 +37,10 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
-/usr/sbin/sshd
+# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+# ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+# ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+# /usr/sbin/sshd
 
 #/usr/sbin/crond
 ## @description  usage info
@@ -48,7 +48,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 ## @stability    evolving
 ## @replaceable  no 
 
-source ~/.bashrc
+source ~/.profile
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 

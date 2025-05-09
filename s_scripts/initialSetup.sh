@@ -1,10 +1,14 @@
 #!/bin/sh
 
-ssh-keygen
-
 sed -i s/#http/http/g /etc/apk/repositories
 
-apk add rsync curl bind-tools docker docker-cli-compose git github-cli
+apk add openssh rsync curl bind-tools docker docker-cli-compose git github-cli
+
+rc-update add sshd boot
+
+rc-service sshd start
+
+< /dev/zero ssh-keygen -q -N ''
 
 rc-update add docker boot
 
