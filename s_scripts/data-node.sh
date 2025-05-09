@@ -37,21 +37,15 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
-# /usr/sbin/sshd
-
-#/usr/sbin/crond
-## @description  usage info
-## @audience     private
-## @stability    evolving
-## @replaceable  no
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+/usr/sbin/sshd
 
 source ~/.profile
 
-# Airflow Worker
-timeout 20 aflc worker
+# # Airflow Worker
+# timeout 20 aflc worker
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 

@@ -5,24 +5,24 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
-# /usr/sbin/sshd
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+/usr/sbin/sshd
 
 source ~/.profile
 
-# Airflow Webserver
-afl webserver
+# # Airflow Webserver
+# afl webserver
 
-# Airflow Scheduler
-afl scheduler
+# # Airflow Scheduler
+# afl scheduler
 
-# Airflow Triggerer
-afl triggerer &
+# # Airflow Triggerer
+# afl triggerer &
 
-# Airflow Flower
-aflc flower
+# # Airflow Flower
+# aflc flower
 
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop

@@ -37,26 +37,14 @@ HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
 
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
-# ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
-# /usr/sbin/sshd
-
-#/usr/sbin/crond
-## @description  usage info
-## @audience     private
-## @stability    evolving
-## @replaceable  no 
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
+/usr/sbin/sshd
 
 source ~/.profile
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
-
-#cp /etc/hosts ${DOCKER_DIR}hosts_bkp
-
-#sh ${DOCKER_DIR}s_scripts/host-upd.sh
-
-#(crontab -l 2>/dev/null; echo "*/2 * * * * ${DOCKER_DIR}s_scripts/host-upd.sh &> ${DOCKER_DIR}s_scripts/hosts.log") | crontab -
 
 # Secondary NameNode
 if [[ "$(hostname)" != "secon-hist" ]]; then
@@ -77,35 +65,9 @@ else
    echo "JobHistory in initiated"
 fi
 
-#sleep 150
-
-#mysql -u hive -h mysql -phive -qfsBe "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='hive_metastore'" > mysql_tst.log
-
-#hive_db=`head -1 mysql_tst.log | awk '{print $1;}'`
-
-#if [[ "$hive_db" == "hive_metastore" ]];
-#then
-#  echo "DATABASE ALREADY EXISTS"
-#else
-#  echo "DATABASE DOES NOT EXIST, CREATING HIVE_METASTORE"
-  #hive_merastore creation
-#  ${DOCKER_DIR}hive/bin/schematool -dbType mysql -initSchema --verbose
-#  if [ $? -ne 0 ]; then
-#    exit 1
-#  fi
-#fi
-
 while ! "${HADOOP_HDFS_HOME}/bin/hdfs" dfs -test -d /user/root/spark/logs; do continue; done
 
 start-history-server.sh
-
-#sleep 10
-
-#$HIVE_HOME/bin/hive --service metastore &
-
-#sleep 10
-
-#$HIVE_HOME/bin/hive --service hiveserver2 &
 
 # Wait for any process to exit
 wait -n
