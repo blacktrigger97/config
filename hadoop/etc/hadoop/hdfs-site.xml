@@ -80,14 +80,14 @@
                 <name>dfs.webhdfs.enabled</name>
 		<value>true</value>
 	</property>
-        <!-- <property>
+        <property>
                 <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
 		<value>true</value>
-	</property> -->
-        <property>
+	</property>
+        <!-- <property>
                 <name>dfs.datanode.dns.nameserver</name>
 		<value>dns1.bdc.home</value>
-	</property>
+	</property> -->
         <!-- <property>
                 <name>dfs.datanode.use.datanode.hostname</name>
 		<value>false</value>
