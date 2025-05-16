@@ -85,11 +85,11 @@
 		<value>false</value>
 	</property>
         <property>
-                <name>dfs.client.use.datanode.hostname</name>
-		<value>false</value>
+                <name>dfs.datanode.dns.nameserver</name>
+		<value>dns1.bdc.home</value>
 	</property>
-        <property>
+        <!-- <property>
                 <name>dfs.datanode.use.datanode.hostname</name>
 		<value>false</value>
-	</property>
+	</property> -->
 </configuration>
