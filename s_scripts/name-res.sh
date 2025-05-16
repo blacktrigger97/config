@@ -4,6 +4,8 @@ HDFS_DATANODE_USER=root
 HDFS_DATANODE_SECURE_USER=hdfs
 HDFS_NAMENODE_USER=root
 HDFS_SECONDARYNAMENODE_USER=root
+YARN_RESOURCEMANAGER_USER="root"
+YARN_NODEMANAGER_USER="root"
 
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key -N ''
