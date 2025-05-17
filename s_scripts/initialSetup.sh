@@ -29,6 +29,9 @@ gh repo clone blacktrigger97/config
 HDC_VERSION=`grep -E "^HDC_VERSION" Infra/.env | cut -d '=' -f2`
 echo $HDC_VERSION
 
+SCALA_VERSION=`grep -E "^SCALA_VERSION" Infra/.env | cut -d '=' -f2`
+echo $SCALA_VERSION
+
 wget https://downloads.apache.org/hadoop/common/hadoop-${HDC_VERSION}/hadoop-${HDC_VERSION}.tar.gz
 
 tar -zxf hadoop-${HDC_VERSION}.tar.gz && rm hadoop-${HDC_VERSION}.tar.gz
@@ -50,7 +53,7 @@ echo $ICEBERG_VER
 ICEBERG_SPARK_VER=`grep -E "^ICEBERG_SPARK_VER" Infra/.env | cut -d '=' -f2`
 echo $ICEBERG_SPARK_VER
 
-wget https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-spark-runtime-${ICEBERG_SPARK_VER}/${ICEBERG_VER}/iceberg-spark-runtime-${ICEBERG_SPARK_VER}-${ICEBERG_VER}.jar -P spark/jars/
+wget https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-spark-runtime-${ICEBERG_SPARK_VER}_${SCALA_VERSION}/${ICEBERG_VER}/iceberg-spark-runtime-${ICEBERG_SPARK_VER}_${SCALA_VERSION}-${ICEBERG_VER}.jar -P spark/jars/
 
 NESSIE_VER=`grep -E "^NESSIE_VER" Infra/.env | cut -d '=' -f2`
 echo $NESSIE_VER
@@ -58,12 +61,12 @@ echo $NESSIE_VER
 NESSIE_SPARK_VER=`grep -E "^NESSIE_SPARK_VER" Infra/.env | cut -d '=' -f2`
 echo $NESSIE_SPARK_VER
 
-wget https://repo.maven.apache.org/maven2/org/projectnessie/nessie-integrations/nessie-spark-extensions-${NESSIE_SPARK_VER}/${NESSIE_VER}/nessie-spark-extensions-${NESSIE_SPARK_VER}-${NESSIE_VER}.jar -P spark/jars/
+wget https://repo.maven.apache.org/maven2/org/projectnessie/nessie-integrations/nessie-spark-extensions-${NESSIE_SPARK_VER}_${SCALA_VERSION}/${NESSIE_VER}/nessie-spark-extensions-${NESSIE_SPARK_VER}_${SCALA_VERSION}-${NESSIE_VER}.jar -P spark/jars/
 
 SPARK_SQL_KAFKA_VER=`grep -E "^SPARK_SQL_KAFKA_VER" Infra/.env | cut -d '=' -f2`
 echo $SPARK_SQL_KAFKA_VER
 
-wget https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-${SPARK_SQL_KAFKA_VER}/${SPARK_VERSION}/spark-sql-kafka-${SPARK_SQL_KAFKA_VER}-${SPARK_VERSION}.jar -P spark/jars/
+wget https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-${SPARK_SQL_KAFKA_VER}_${SCALA_VERSION}/${SPARK_VERSION}/spark-sql-kafka-${SPARK_SQL_KAFKA_VER}_${SCALA_VERSION}-${SPARK_VERSION}.jar -P spark/jars/
 
 COMMON_POOL_VER=`grep -E "^COMMON_POOL_VER" Infra/.env | cut -d '=' -f2`
 echo $COMMON_POOL_VER
@@ -77,6 +80,7 @@ wget https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/${KAFKA_CLIEN
 
 wget https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}/${SPARK_VERSION}/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}-${SPARK_VERSION}.jar -P spark/jars/
 
+wget https://repo1.maven.org/maven2/org/apache/spark/spark-avro_${SCALA_VERSION}/${SPARK_VERSION}/spark-avro_${SCALA_VERSION}-${SPARK_VERSION}.jar -P spark/jars/
 
 echo "export JAVA_HOME=/usr/lib/jvm/zulu11/" >> hadoop/etc/hadoop/hadoop-env.sh
 
