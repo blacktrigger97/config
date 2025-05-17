@@ -84,7 +84,7 @@ mv spark/conf/spark-defaults.conf.template spark/conf/spark-defaults.conf
 
 mv spark/conf/spark-env.sh.template spark/conf/spark-env.sh
 
-echo "export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop" >> spark/conf/spark-env.sh
+echo "export HADOOP_CONF_DIR=/root/hadoop/etc/hadoop" >> spark/conf/spark-env.sh
 
 rsync -avru config/hadoop/ hadoop
 
