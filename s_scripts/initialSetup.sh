@@ -20,11 +20,9 @@ cd /root
 
 gh auth login
 
-rm -rf Infra
+rm -rf Infra config hadoop spark
 
 gh repo clone blacktrigger97/Infra
-
-rm -rf config
 
 gh repo clone blacktrigger97/config
 
