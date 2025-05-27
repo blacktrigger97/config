@@ -78,7 +78,7 @@ echo $KAFKA_CLIENT_VER
 
 wget https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/${KAFKA_CLIENT_VER}/kafka-clients-${KAFKA_CLIENT_VER}.jar -P spark/jars/
 
-wget https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}/${SPARK_VERSION}/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}-${SPARK_VERSION}.jar -P spark/jars/
+wget https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}_${SCALA_VERSION}/${SPARK_VERSION}/spark-token-provider-kafka-${SPARK_SQL_KAFKA_VER}_${SCALA_VERSION}-${SPARK_VERSION}.jar -P spark/jars/
 
 wget https://repo1.maven.org/maven2/org/apache/spark/spark-avro_${SCALA_VERSION}/${SPARK_VERSION}/spark-avro_${SCALA_VERSION}-${SPARK_VERSION}.jar -P spark/jars/
 
