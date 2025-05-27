@@ -14,9 +14,11 @@ rc-update add docker boot
 
 rc-service docker start
 
-source /root/.profile
+touch /root/.profile
 
 cd /root
+
+gh auth login
 
 rm -rf Infra
 
