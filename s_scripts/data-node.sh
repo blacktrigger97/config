@@ -39,8 +39,8 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 source ~/.profile
 
-# # Airflow Worker
-# airflow celery worker -l info -D
+# Airflow Worker
+airflow celery worker -l info -D
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
