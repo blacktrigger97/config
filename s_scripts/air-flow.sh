@@ -9,7 +9,7 @@ airflow db migrate
 airflow users create -e blacktrigger97@gmail.com -f Airflow -l Admin -u admin -p admin_123 -r Admin
 
 # Airflow Webserver
-airflow webserver -l=/root/logs/airflow/webserver/webserver.log --stderr=/root/logs/airflow/webserver/webserver.err --stdout=/root/logs/airflow/webserver/webserver.out --pid=/run/airflow/airflow-webserver.pid &
+airflow api-server -l=/root/logs/airflow/webserver/webserver.log --stderr=/root/logs/airflow/webserver/webserver.err --stdout=/root/logs/airflow/webserver/webserver.out --pid=/run/airflow/airflow-webserver.pid &
 
 # Airflow Scheduler
 airflow scheduler -l=/root/logs/airflow/scheduler/scheduler.log --stderr=/root/logs/airflow/scheduler/scheduler.err --stdout=/root/logs/airflow/scheduler/scheduler.out --pid=/run/airflow/airflow-scheduler.pid &
