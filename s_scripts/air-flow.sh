@@ -3,7 +3,9 @@
 source ~/.profile
 
 # Airflow Initialize Database
-airflow db migrate
+airflow db migrate 
+
+sleep 1200
 
 # Airflow Admin Creation
 # airflow users create -e blacktrigger97@gmail.com -f Airflow -l Admin -u admin -p admin_123 -r Admin
