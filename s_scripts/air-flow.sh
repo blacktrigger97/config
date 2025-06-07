@@ -9,19 +9,19 @@ airflow db migrate
 # airflow users create -e blacktrigger97@gmail.com -f Airflow -l Admin -u admin -p admin_123 -r Admin
 
 # Airflow Webserver
-airflow api-server -l=/root/logs/airflow/api-server/api-server.log --stderr=/root/logs/airflow/api-server/api-server.err --stdout=/root/logs/airflow/api-server/api-server.out --pid=/run/airflow/airflow-server.pid &
+airflow api-server -l=/root/airflow/logs/api-server/api-server.log --stderr=/root/airflow/logs/api-server/api-server.err --stdout=/root/airflow/logs/api-server/api-server.out --pid=/run/airflow/airflow-server.pid &
 
 # Airflow Scheduler
-airflow scheduler -l=/root/logs/airflow/scheduler/scheduler.log --stderr=/root/logs/airflow/scheduler/scheduler.err --stdout=/root/logs/airflow/scheduler/scheduler.out --pid=/run/airflow/airflow-scheduler.pid &
+airflow scheduler -l=/root/airflow/logs/scheduler/scheduler.log --stderr=/root/airflow/logs/scheduler/scheduler.err --stdout=/root/airflow/logs/scheduler/scheduler.out --pid=/run/airflow/airflow-scheduler.pid &
 
 # Airflow Triggerer
-airflow dag-processor -l=/root/logs/airflow/dag_processor/dag_processor.log --stderr=/root/logs/airflow/dag_processor/dag_processor.err --stdout=/root/logs/airflow/dag_processor/dag_processor.out --pid=/run/airflow/airflow-dagprocessor.pid &
+airflow dag-processor -l=/root/airflow/logs/dag_processor/dag_processor.log --stderr=/root/airflow/logs/dag_processor/dag_processor.err --stdout=/root/airflow/logs/dag_processor/dag_processor.out --pid=/run/airflow/airflow-dagprocessor.pid &
 
 # Airflow Triggerer
-airflow triggerer -l=/root/logs/airflow/triggerer/triggerer.log --stderr=/root/logs/airflow/triggerer/triggerer.err --stdout=/root/logs/airflow/triggerer/triggerer.out --pid=/run/airflow/airflow-triggerer.pid &
+airflow triggerer -l=/root/airflow/logs/triggerer/triggerer.log --stderr=/root/airflow/logs/triggerer/triggerer.err --stdout=/root/airflow/logs/triggerer/triggerer.out --pid=/run/airflow/airflow-triggerer.pid &
 
 # Airflow Flower
-airflow celery flower --hostname='airflow.bdc.home' -l=/root/logs/airflow/flower/flower.log --stderr=/root/logs/airflow/flower/flower.err --stdout=/root/logs/airflow/flower/flower.out --pid=/run/airflow/airflow-flower.pid &
+airflow celery flower --hostname='airflow.bdc.home' -l=/root/airflow/logs/flower/flower.log --stderr=/root/airflow/logs/flower/flower.err --stdout=/root/airflow/logs/flower/flower.out --pid=/run/airflow/airflow-flower.pid &
 
 # Wait for any process to exit
 wait -n
