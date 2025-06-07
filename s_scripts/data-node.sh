@@ -40,7 +40,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 source ~/.profile
 
 # Airflow Worker
-airflow celery worker -H `hostname` -l=/root/logs/airflow/worker/worker.log --stderr=/root/logs/airflow/worker/worker.err --stdout=/root/logs/airflow/worker/worker.out --pid=/run/airflow/airflow-worker.pid &
+airflow celery worker -l=/root/logs/airflow/worker/worker.log --stderr=/root/logs/airflow/worker/worker.err --stdout=/root/logs/airflow/worker/worker.out --pid=/run/airflow/airflow-worker.pid &
 
 HADOOP_HDFS_HOME=${DOCKER_DIR}hadoop
 
