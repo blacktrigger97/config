@@ -4,9 +4,10 @@ source ~/.profile
 
 cd /root/airflow
 
-# # uv package download
+# uv package download
 # uv venv
 # source .venv/bin/activate && uv sync
+uv pip --system sync
 
 # Airflow Initialize Database
 airflow db migrate 
