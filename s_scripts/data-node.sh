@@ -39,6 +39,11 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 source ~/.profile
 
+# # uv package download
+# cd /root/airflow
+# uv venv
+# source .venv/bin/activate && uv sync
+
 # Airflow Worker
 airflow celery worker -H `hostname` -l=/root/airflow/logs/worker/worker.log --stderr=/root/airflow/logs/worker/worker.err --stdout=/root/airflow/logs/worker/worker.out --pid=/run/airflow/airflow-worker.pid &
 
