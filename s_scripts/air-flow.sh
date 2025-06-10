@@ -2,6 +2,12 @@
 
 source ~/.profile
 
+cd /root/airflow
+
+# uv package download
+uv venv
+source .venv/bin/activate && uv sync
+
 # Airflow Initialize Database
 airflow db migrate 
 
