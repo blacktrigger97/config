@@ -3,6 +3,7 @@
 source ~/.profile
 
 # uv package download
+cd /root/airflow
 uv pip install --system -r pyproject.toml
 
 # sleep 600
