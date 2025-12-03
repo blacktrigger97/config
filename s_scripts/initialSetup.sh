@@ -82,6 +82,12 @@ wget https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-
 
 wget https://repo1.maven.org/maven2/org/apache/spark/spark-avro_${SCALA_VERSION}/${SPARK_VERSION}/spark-avro_${SCALA_VERSION}-${SPARK_VERSION}.jar -P /shares/sparkExtraJars
 
+AWS_SPARK=`grep -E "^AWS_SPARK" Infra/.env | cut -d '=' -f2`
+echo $AWS_SPARK
+
+wget https://repo1.maven.org/maven2/software/amazon/awssdk/bundle/${AWS_SPARK}/bundle-${AWS_SPARK}.jar -P /shares/sparkExtraJars
+
+wget https://repo1.maven.org/maven2/software/amazon/awssdk/url-connection-client/${AWS_SPARK}/url-connection-client-${AWS_SPARK}.jar -P /shares/sparkExtraJars
 # echo "export JAVA_HOME=/usr/lib/jvm/zulu11/" >> hadoop/etc/hadoop/hadoop-env.sh
 
 # mv spark/conf/spark-defaults.conf.template spark/conf/spark-defaults.conf
