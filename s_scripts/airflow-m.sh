@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-source ~/.profile
+# source ~/.profile
 
 # uv package download
-cd /root/airflow
-uv pip install --system -r pyproject.toml
+# cd /root/airflow
+# uv pip install --system -r pyproject.toml
 
 # sleep 600
 # Airflow Initialize Database
