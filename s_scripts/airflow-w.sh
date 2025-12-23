@@ -9,7 +9,8 @@ source ~/.profile
 # Airflow Worker
 # host=`hostname`
 # echo "hostname: $host"
-airflow celery worker -H `hostname` & # -l=/opt/airflow/logs/worker/worker.log --stderr=/opt/airflow/logs/worker/worker.err --stdout=/opt/airflow/logs/worker/worker.out --pid=/run/airflow/airflow-worker.pid &
+sleep 360
+# airflow celery worker -H `hostname` & # -l=/opt/airflow/logs/worker/worker.log --stderr=/opt/airflow/logs/worker/worker.err --stdout=/opt/airflow/logs/worker/worker.out --pid=/run/airflow/airflow-worker.pid &
 
 # Wait for any process to exit
 wait -n
