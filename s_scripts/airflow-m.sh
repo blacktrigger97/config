@@ -6,8 +6,6 @@ source ~/.profile
 # cd /opt/airflow
 # uv pip install --system -r pyproject.toml
 
-chmod 777 /opt/airflow/password.json
-
 # sleep 600
 # Airflow Initialize Database
 airflow db migrate
